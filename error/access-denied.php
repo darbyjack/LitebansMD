@@ -10,12 +10,12 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-        <h2>Database Error</h2><br>
+        <h2>Connection Error</h2><br>
 
         <div class="text-warning">
             The web interface was unable to connect to the database using the configuration provided.
             <br>
-            Database error: Access denied
+            Connection failed: Access denied
             <br>
             <?php
             if (isset($_GET['error'])) {
