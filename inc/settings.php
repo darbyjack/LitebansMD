@@ -31,6 +31,9 @@ final class Settings {
         // Show inactive bans? Removed bans will show (Unbanned), mutes will show (Unmuted), warnings will show (Expired).
         $this->show_inactive_bans = true;
 
+        // Show silent bans?
+        $this->show_silent_bans = true;
+
         // Show pager? This allows users to page through the list of bans.
         $this->show_pager = true;
 
@@ -113,7 +116,11 @@ final class Settings {
         }
 
         if (!$this->show_inactive_bans) {
-            $this->active_query = "WHERE active=" . Settings::$TRUE;
+            $this->active_query = self::append_query($this->active_query, "active=" . Settings::$TRUE);
+        }
+
+        if (!$this->show_silent_bans) {
+            $this->active_query = self::append_query($this->active_query, "silent=" . Settings::$FALSE);
         }
 
 
@@ -194,6 +201,12 @@ final class Settings {
         }
     }
 
+    static function append_query($existing, $new) {
+        if ($existing !== "") {
+            return $existing . " AND $new";
+        }
+        return "WHERE $new";
+    }
 
     /**
      * @param $settings Settings
