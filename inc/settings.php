@@ -203,7 +203,7 @@ final class Settings {
 
     static function append_query($existing, $new) {
         if ($existing !== "") {
-            return $existing . " AND $new";
+            return "$existing AND $new";
         }
         return "WHERE $new";
     }

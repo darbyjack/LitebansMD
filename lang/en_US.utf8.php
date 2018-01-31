@@ -63,6 +63,11 @@ class DefaultLang {
         $array["info_kick_reason"] = "Kick Reason";
         $array["info_kick_when"] = "Kick Date";
 
+        $array["info_tag_active"] = "Active";
+        $array["info_tag_inactive"] = "Inactive";
+        $array["info_tag_permanent"] = "Permanent";
+
+
         $array["bans_player"] = "Name";
         $array["bans_by"] = "Banned By";
         $array["bans_reason"] = "Reason";

@@ -30,7 +30,7 @@
             require_once '../inc/settings.php';
             $settings = new Settings(false);
             $host = $settings->host;
-            if ($host === "localhost" || $host === "127.0.0.1") {
+            if ($host === "localhost" || $host === "127.0.0.1" || $host === "0.0.0.0") {
                 echo("<br>- The web interface is connected to <a class=\"text-info\">$host</a>. If LiteBans and the web interface are both connected to <a class=\"text-info\">$host</a>, they should not be hosted on two separate servers.");
             }
             $table_prefix = $settings->table_prefix;

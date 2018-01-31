@@ -156,12 +156,12 @@ if ($st->execute(array($id))) {
         $style = 'style="margin-left: 13px; font-size: 16px;"';
         $active = $page->active($row);
         if ($active === true) {
-            $header .= "<span $style class='label label-danger'>Active</span>";
+            $header .= "<span $style class='label label-danger'>" . $page->t("info_tag_active") . "</span>";
             if ($permanent) {
-                $header .= "<span $style class='label label-danger'>Permanent</span>";
+                $header .= "<span $style class='label label-danger'>" . $page->t("info_tag_permanent") . "</span>";
             }
         } else {
-            $header .= "<span $style class='label label-warning'>Inactive</span>";
+            $header .= "<span $style class='label label-warning'>" . $page->t("info_tag_inactive") . "</span>";
         }
     }
     $page->print_header(true, $header);
