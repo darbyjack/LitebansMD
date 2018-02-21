@@ -55,6 +55,7 @@ final class Settings {
          * 'https://minotar.net/avatar/$NAME/25'
          */
         $this->avatar_source = 'https://crafatar.com/avatars/$UUID?size=25';
+        $this->avatar_source_offline_mode = 'https://minotar.net/avatar/$NAME/25';
 
         // If enabled, names will be shown below avatars instead of being shown next to them.
         $this->avatar_names_below = true;
