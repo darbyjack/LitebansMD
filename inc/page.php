@@ -193,7 +193,7 @@ class Page {
             }
         }
 
-        $uuid = str_replace($uuid, "-", "");
+        $uuid = str_replace("-", "", $uuid);
         $src = str_replace('{name}', $name, str_replace('{uuid}', $uuid, $avatar_source));
         if (in_array($name, $this->settings->console_aliases) || $name === $this->settings->console_name) {
             $src = $this->settings->console_image;
