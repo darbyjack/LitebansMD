@@ -50,17 +50,17 @@ final class Settings {
 
         // Avatar images for all players will be fetched from this URL.
         // Examples:
-        // 'https://cravatar.eu/avatar/$UUID/25'
-        // 'https://crafatar.com/avatars/$UUID?size=25'
-        // 'https://minotar.net/avatar/$NAME/25'
-        $this->avatar_source = 'https://crafatar.com/avatars/$UUID?size=25';
+        // 'https://cravatar.eu/avatar/{uuid}/25'
+        // 'https://crafatar.com/avatars/{uuid}?size=25'
+        // 'https://minotar.net/avatar/{uuid}/25'
+        $this->avatar_source = 'https://crafatar.com/avatars/{uuid}?size=25';
 
         // `avatar_source_offline_mode` controls where avatars for offline-mode players are fetched from.
         // Offline-mode UUIDs are substituted for player names unless the `avatar_allow_offline_mode_uuids` option is enabled.
         // (This is done because avatar sources generally serve the default "Steve" avatar for *all* offline-mode UUIDs, including those of premium players)
         // Crafatar no longer supports names, so it cannot be used as an offline-mode player-name avatar source as of 2018-02-16 (https://crafatar.com/#meta-usernames)
         // Since "skins.minecraft.net" is no longer available, this could pose a problem for other avatar sources as well.
-        $this->avatar_source_offline_mode = 'https://minotar.net/avatar/$NAME/25';
+        $this->avatar_source_offline_mode = 'https://minotar.net/avatar/{name}/25';
 
         // If enabled, names will be shown below avatars instead of being shown next to them.
         $this->avatar_names_below = true;
