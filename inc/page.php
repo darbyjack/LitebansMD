@@ -392,6 +392,9 @@ class Page {
     }
 
     function print_table_rows($row, $array, $print_headers = true) {
+        if (!$this->settings->show_server_scope) {
+            unset($array[$this->t("column_server")]);
+        }
         if ($print_headers && !$this->table_headers_printed) {
             $headers = array_keys($array);
             $this->table_print_headers($headers);

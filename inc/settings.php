@@ -28,6 +28,9 @@ final class Settings {
         // Clicking on the header name will send you to this address.
         $this->name_link = '#';
 
+        // Show server scope column?
+        $this->show_server_scope = true;
+
         // Show inactive bans? Removed bans will show (Unbanned), mutes will show (Unmuted), warnings will show (Expired).
         $this->show_inactive_bans = true;
 
