@@ -55,12 +55,13 @@ class BanInfo extends Info {
         $page = $this->page;
 
         return array(
-            $page->t("info_banned_player") => $this->punished_avatar($player_name, $row),
-            $page->t("info_banned_by")     => $this->moderator_avatar($row),
-            $page->t("info_banned_reason") => $page->clean($row['reason']),
-            $page->t("info_banned_when")   => $page->millis_to_date($row['time']),
-            $page->t("info_banned_expiry") => $page->expiry($row),
-            $page->t("column_server")      => $page->server($row),
+            $page->t("info_banned_player")   => $this->punished_avatar($player_name, $row),
+            $page->t("info_banned_by")       => $this->moderator_avatar($row),
+            $page->t("info_banned_reason")   => $page->clean($row['reason']),
+            $page->t("info_banned_when")     => $page->millis_to_date($row['time']),
+            $page->t("info_banned_expiry")   => $page->expiry($row),
+            $page->t("column_server_scope")  => $page->server($row),
+            $page->t("column_server_origin") => $page->server($row, "server_origin"),
         );
     }
 }
@@ -69,12 +70,13 @@ class MuteInfo extends Info {
     function basic_info($row, $player_name) {
         $page = $this->page;
         return array(
-            $page->t("info_muted_player") => $this->punished_avatar($player_name, $row),
-            $page->t("info_muted_by")     => $this->moderator_avatar($row),
-            $page->t("info_muted_reason") => $page->clean($row['reason']),
-            $page->t("info_muted_when")   => $page->millis_to_date($row['time']),
-            $page->t("info_muted_expiry") => $page->expiry($row),
-            $page->t("column_server")     => $page->server($row),
+            $page->t("info_muted_player")    => $this->punished_avatar($player_name, $row),
+            $page->t("info_muted_by")        => $this->moderator_avatar($row),
+            $page->t("info_muted_reason")    => $page->clean($row['reason']),
+            $page->t("info_muted_when")      => $page->millis_to_date($row['time']),
+            $page->t("info_muted_expiry")    => $page->expiry($row),
+            $page->t("column_server_scope")  => $page->server($row),
+            $page->t("column_server_origin") => $page->server($row, "server_origin"),
         );
     }
 }
@@ -87,12 +89,13 @@ class WarnInfo extends Info {
     function basic_info($row, $player_name) {
         $page = $this->page;
         return array(
-            $page->t("info_warn_player") => $this->punished_avatar($player_name, $row),
-            $page->t("info_warn_by")     => $this->moderator_avatar($row),
-            $page->t("info_warn_reason") => $page->clean($row['reason']),
-            $page->t("info_warn_when")   => $page->millis_to_date($row['time']),
-            $page->t("info_warn_expiry") => $page->expiry($row),
-            $page->t("column_server")    => $page->server($row),
+            $page->t("info_warn_player")     => $this->punished_avatar($player_name, $row),
+            $page->t("info_warn_by")         => $this->moderator_avatar($row),
+            $page->t("info_warn_reason")     => $page->clean($row['reason']),
+            $page->t("info_warn_when")       => $page->millis_to_date($row['time']),
+            $page->t("info_warn_expiry")     => $page->expiry($row),
+            $page->t("column_server_scope")  => $page->server($row),
+            $page->t("column_server_origin") => $page->server($row, "server_origin"),
         );
     }
 }
@@ -101,11 +104,12 @@ class KickInfo extends Info {
     function basic_info($row, $player_name) {
         $page = $this->page;
         return array(
-            $page->t("info_kick_player") => $this->punished_avatar($player_name, $row),
-            $page->t("info_kick_by")     => $this->moderator_avatar($row),
-            $page->t("info_kick_reason") => $page->clean($row['reason']),
-            $page->t("info_kick_when")   => $page->millis_to_date($row['time']),
-            $page->t("column_server")    => $page->server($row),
+            $page->t("info_kick_player")     => $this->punished_avatar($player_name, $row),
+            $page->t("info_kick_by")         => $this->moderator_avatar($row),
+            $page->t("info_kick_reason")     => $page->clean($row['reason']),
+            $page->t("info_kick_when")       => $page->millis_to_date($row['time']),
+            $page->t("column_server_scope")  => $page->server($row),
+            $page->t("column_server_origin") => $page->server($row, "server_origin"),
         );
     }
 }

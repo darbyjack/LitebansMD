@@ -92,6 +92,8 @@ class DefaultLang {
         $array["warns_receive"] = "Received Warning";
 
         $array["column_server"] = "Server";
+        $array["column_server_scope"] = "Server Scope";
+        $array["column_server_origin"] = "Origin Server";
         $array["column_server_global"] = "*";
 
         // Errors which are only accessible from invalid user input or removed pages.
