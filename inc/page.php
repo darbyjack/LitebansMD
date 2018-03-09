@@ -42,21 +42,21 @@ class Page {
         $this->set_info($info);
 
         $this->permanent = array(
-            'ban'  => $this->t("page_perm_ban"),
-            'mute' => $this->t("page_perm_mute"),
-            'warn' => $this->t("page_perm_warn"),
+            'ban'  => $this->t("generic.permanent") . " " . $this->t("generic.ban"),
+            'mute' => $this->t("generic.permanent") . " " . $this->t("generic.mute"),
+            'warn' => $this->t("generic.permanent"),
             'kick' => null,
         );
         $this->expired = array(
-            'ban'  => $this->t("page_expire_ban"),
-            'mute' => $this->t("page_expire_mute"),
-            'warn' => $this->t("page_expire"),
+            'ban'  => $this->t("page.expired.ban"),
+            'mute' => $this->t("page.expired.mute"),
+            'warn' => $this->t("page.expired.warning"),
             'kick' => null,
         );
         $this->expired_by = array(
-            'ban'  => $this->t("page_expire_ban_by"),
-            'mute' => $this->t("page_expire_mute_by"),
-            'warn' => $this->t("page_expire"),
+            'ban'  => $this->t("page.expired.ban-by"),
+            'mute' => $this->t("page.expired.mute-by"),
+            'warn' => $this->t("page.expired.warning"),
             'kick' => null,
         );
 
@@ -86,28 +86,28 @@ class Page {
                 return array(
                     "type"  => "ban",
                     "table" => $settings->table['bans'],
-                    "title" => $this->t("page_title_ban"),
+                    "title" => $this->t("title.bans"),
                 );
             case "mute":
             case "mutes":
                 return array(
                     "type"  => "mute",
                     "table" => $settings->table['mutes'],
-                    "title" => $this->t("page_title_mute"),
+                    "title" => $this->t("title.mutes"),
                 );
             case "warn":
             case "warnings":
                 return array(
                     "type"  => "warn",
                     "table" => $settings->table['warnings'],
-                    "title" => $this->t("page_title_warn"),
+                    "title" => $this->t("title.warnings"),
                 );
             case "kick":
             case "kicks":
                 return array(
                     "type"  => "kick",
                     "table" => $settings->table['kicks'],
-                    "title" => $this->t("page_title_kick"),
+                    "title" => $this->t("title.kicks"),
                 );
             default:
                 return array(
@@ -283,7 +283,7 @@ class Page {
             return "-";
         }
         if ($server === "*") {
-            return $this->t("column_server_global");
+            return $this->t("table.server.global");
         }
         return $server;
     }
@@ -334,7 +334,7 @@ class Page {
         }
         if ($expired) {
             $until .= ' ';
-            $until .= $this->t("page_expire");
+            $until .= $this->t("page.expired.warning");
         }
         return $until;
     }
@@ -393,7 +393,7 @@ class Page {
 
     function print_table_rows($row, $array, $print_headers = true) {
         if (!$this->settings->show_server_scope) {
-            unset($array[$this->t("column_server")]);
+            unset($array[$this->t("table.server.name")]);
         }
         if ($print_headers && !$this->table_headers_printed) {
             $headers = array_keys($array);
@@ -412,7 +412,7 @@ class Page {
                 }
             }
             $a = "a";
-            if ($header === $this->t("warns_receive")) {
+            if ($header === $this->t("warnings.received")) {
                 $icon = ($text !== "0") ? "glyphicon-ok" : "glyphicon-remove";
                 $a .= " class=\"glyphicon $icon\" aria-hidden=true";
                 $text = "";
@@ -449,7 +449,7 @@ class Page {
         echo '
          <div style="text-align: left;" class="row">
              <div style="margin-left: 15px;">
-                 <form onsubmit="captureForm(event);" class="form-inline"><div class="form-group"><input type="text" class="form-control" id="user" placeholder="' . $this->t("page_check_user") . '"></div><button type="submit" class="btn btn-default" style="margin-left: 5px;">' . $this->t("page_check_submit") . '</button></form>
+                 <form onsubmit="captureForm(event);" class="form-inline"><div class="form-group"><input type="text" class="form-control" id="user" placeholder="' . $this->t("generic.player-name") . '"></div><button type="submit" class="btn btn-default" style="margin-left: 5px;">' . $this->t("action.check") . '</button></form>
              </div>
              <script type="text/javascript">function captureForm(b){var o=$("#output");o.removeClass("in");var x=setTimeout(function(){o.html("<br>")}, 150);$.ajax({type:"GET",url:"check.php?name="+$("#user").val()+"&table=' . $table . '"}).done(function(c){clearTimeout(x);o.html(c);o.addClass("in")});b.preventDefault();return false};</script>
              <div id="output" class="success fade" data-alert="alert" style="margin-left: 15px;"><br></div>
@@ -493,7 +493,7 @@ class Page {
         if ($next_active) {
             $pager_next = "<a href=\"$page?page={$next}{$args}\">$pager_next</a>";
         }
-        $pager_count = '<div style=\"margin-top: 32px;\"><div style=\"text-align: center; font-size:15px;\">' . $this->t("page_page") . ' ' . $cur . '/' . $pages . '</div></div>';
+        $pager_count = '<div style=\"margin-top: 32px;\"><div style=\"text-align: center; font-size:15px;\">' . $this->t("table.pager.number") . ' ' . $cur . '/' . $pages . '</div></div>';
         echo "$pager_prev $pager_next $pager_count";
     }
 

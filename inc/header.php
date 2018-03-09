@@ -94,11 +94,11 @@ $settings = $this->page->settings;
         <nav id="litebans-navbar" class="collapse navbar-collapse">
             <?php
             $this->navbar(array(
-                "index.php"    => $this->page->t("header_index"),
-                "bans.php"     => $this->page->t("header_bans"),
-                "mutes.php"    => $this->page->t("header_mutes"),
-                "warnings.php" => $this->page->t("header_warnings"),
-                "kicks.php"    => $this->page->t("header_kicks"),
+                "index.php"    => $this->page->t("title.index"),
+                "bans.php"     => $this->page->t("title.bans"),
+                "mutes.php"    => $this->page->t("title.mutes"),
+                "warnings.php" => $this->page->t("title.warnings"),
+                "kicks.php"    => $this->page->t("title.kicks"),
             ));
             ?>
             <div class="nav navbar-nav navbar-right">

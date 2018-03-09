@@ -16,11 +16,11 @@ foreach ($rows as $row) {
     if ($player_name === null) continue;
 
     $page->print_table_rows($row, array(
-        $page->t("kicks_player")  => $page->get_avatar($player_name, $row['uuid']),
-        $page->t("kicks_by")      => $page->get_avatar($page->get_banner_name($row), $row['banned_by_uuid']),
-        $page->t("kicks_reason")  => $page->clean($row['reason']),
-        $page->t("kicks_when")    => $page->millis_to_date($row['time']),
-        $page->t("column_server") => $page->server($row, "server_origin"),
+        $page->t("table.player")      => $page->get_avatar($player_name, $row['uuid']),
+        $page->t("table.executor")    => $page->get_avatar($page->get_banner_name($row), $row['banned_by_uuid']),
+        $page->t("table.reason")      => $page->clean($row['reason']),
+        $page->t("table.date")        => $page->millis_to_date($row['time']),
+        $page->t("table.server.name") => $page->server($row, "server_origin"),
     ));
 }
 $page->table_end();

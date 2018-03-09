@@ -69,20 +69,21 @@ class History {
 
 $page = new Page("history");
 
-isset($_GET['uuid']) && is_string($_GET['uuid']) or die($page->t("history_missinguuid"));
+isset($_GET['uuid']) && is_string($_GET['uuid']) or die($page->t("error.missing-args"));
 
 $staffhistory = (isset($_GET['staffhistory']) && $_GET['staffhistory'] === "1");
 
 $uuid = $_GET['uuid'];
 $name = $page->get_name($uuid);
 
-$name !== null or die($page->t("history_playernotfound"));
+$name !== null or die(str_replace("{name}", $name, $page->t("error.name.unseen")));
 
 if ($staffhistory) {
-    $page->title = $page->t("history_recentby") . $name;
+    $page->title = $page->t("title.staff-history");
 } else {
-    $page->title = $page->t("history_recentfor") . $name;
+    $page->title = $page->t("title.player-history");
 }
+$page->title = str_replace("{name}", $name, $page->title);
 
 
 $page->print_title();
@@ -164,13 +165,13 @@ try {
             $label = "<span $style class='label label-$label_type'>$label_name</span>";
 
             $page->print_table_rows($row, array(
-                $page->t("history_tabletype")      => $label,
-                $page->t("history_tableplayer")    => $page->get_avatar($page->get_name($row['uuid']), $row['uuid']),
-                $page->t("history_tablemoderator") => $page->get_avatar($page->get_banner_name($row), $row['banned_by_uuid']),
-                $page->t("history_tablereason")    => $page->clean($row['reason']),
-                $page->t("history_tabledate")      => $page->millis_to_date($row['time']),
-                $page->t("history_tableexpires")   => $page->expiry($row),
-                $page->t("column_server")          => $page->server($row),
+                $page->t("generic.type")      => $label,
+                $page->t("table.player")      => $page->get_avatar($page->get_name($row['uuid']), $row['uuid']),
+                $page->t("table.executor")    => $page->get_avatar($page->get_banner_name($row), $row['banned_by_uuid']),
+                $page->t("table.reason")      => $page->clean($row['reason']),
+                $page->t("table.date")        => $page->millis_to_date($row['time']),
+                $page->t("table.expires")     => $page->expiry($row),
+                $page->t("table.server.name") => $page->server($row),
                 //'i' => $i . "/" . $limit . "/" . $total,
             ));
         }
@@ -199,11 +200,12 @@ try {
             $page->print_pager($total, $args, $prevargs);
         }
     } else {
-        echo $page->t("history_nopunishments") . "<br>";
+        echo $page->t("history.error.uuid.no-result") . "<br>";
     }
 
     if ($from_href !== null) {
-        echo "<br><a class=\"btn\" href=\"$from_href\">" . $page->t("history_returnto") . " $from_title </a > ";
+        $btnlabel = str_replace("{origin}", $from_title, $page->t("action.return"));
+        echo "<br><a class=\"btn\" href=\"$from_href\">$btnlabel</a> ";
     }
 
     $page->print_footer();

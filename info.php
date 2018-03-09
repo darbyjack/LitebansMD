@@ -53,15 +53,14 @@ abstract class Info {
 class BanInfo extends Info {
     function basic_info($row, $player_name) {
         $page = $this->page;
-
         return array(
-            $page->t("info_banned_player")   => $this->punished_avatar($player_name, $row),
-            $page->t("info_banned_by")       => $this->moderator_avatar($row),
-            $page->t("info_banned_reason")   => $page->clean($row['reason']),
-            $page->t("info_banned_when")     => $page->millis_to_date($row['time']),
-            $page->t("info_banned_expiry")   => $page->expiry($row),
-            $page->t("column_server_scope")  => $page->server($row),
-            $page->t("column_server_origin") => $page->server($row, "server_origin"),
+            $page->t("table.player")        => $this->punished_avatar($player_name, $row),
+            $page->t("table.executor")      => $this->moderator_avatar($row),
+            $page->t("table.reason")        => $page->clean($row['reason']),
+            $page->t("table.date")          => $page->millis_to_date($row['time']),
+            $page->t("table.expires")       => $page->expiry($row),
+            $page->t("table.server.scope")  => $page->server($row),
+            $page->t("table.server.origin") => $page->server($row, "server_origin"),
         );
     }
 }
@@ -70,32 +69,28 @@ class MuteInfo extends Info {
     function basic_info($row, $player_name) {
         $page = $this->page;
         return array(
-            $page->t("info_muted_player")    => $this->punished_avatar($player_name, $row),
-            $page->t("info_muted_by")        => $this->moderator_avatar($row),
-            $page->t("info_muted_reason")    => $page->clean($row['reason']),
-            $page->t("info_muted_when")      => $page->millis_to_date($row['time']),
-            $page->t("info_muted_expiry")    => $page->expiry($row),
-            $page->t("column_server_scope")  => $page->server($row),
-            $page->t("column_server_origin") => $page->server($row, "server_origin"),
+            $page->t("table.player")        => $this->punished_avatar($player_name, $row),
+            $page->t("table.executor")      => $this->moderator_avatar($row),
+            $page->t("table.reason")        => $page->clean($row['reason']),
+            $page->t("table.date")          => $page->millis_to_date($row['time']),
+            $page->t("table.expires")       => $page->expiry($row),
+            $page->t("table.server.scope")  => $page->server($row),
+            $page->t("table.server.origin") => $page->server($row, "server_origin"),
         );
     }
 }
 
 class WarnInfo extends Info {
-    function name() {
-        return $this->page->t("info_warn_name");
-    }
-
     function basic_info($row, $player_name) {
         $page = $this->page;
         return array(
-            $page->t("info_warn_player")     => $this->punished_avatar($player_name, $row),
-            $page->t("info_warn_by")         => $this->moderator_avatar($row),
-            $page->t("info_warn_reason")     => $page->clean($row['reason']),
-            $page->t("info_warn_when")       => $page->millis_to_date($row['time']),
-            $page->t("info_warn_expiry")     => $page->expiry($row),
-            $page->t("column_server_scope")  => $page->server($row),
-            $page->t("column_server_origin") => $page->server($row, "server_origin"),
+            $page->t("table.player")        => $this->punished_avatar($player_name, $row),
+            $page->t("table.executor")      => $this->moderator_avatar($row),
+            $page->t("table.reason")        => $page->clean($row['reason']),
+            $page->t("table.date")          => $page->millis_to_date($row['time']),
+            $page->t("table.expires")       => $page->expiry($row),
+            $page->t("table.server.scope")  => $page->server($row),
+            $page->t("table.server.origin") => $page->server($row, "server_origin"),
         );
     }
 }
@@ -104,12 +99,12 @@ class KickInfo extends Info {
     function basic_info($row, $player_name) {
         $page = $this->page;
         return array(
-            $page->t("info_kick_player")     => $this->punished_avatar($player_name, $row),
-            $page->t("info_kick_by")         => $this->moderator_avatar($row),
-            $page->t("info_kick_reason")     => $page->clean($row['reason']),
-            $page->t("info_kick_when")       => $page->millis_to_date($row['time']),
-            $page->t("column_server_scope")  => $page->server($row),
-            $page->t("column_server_origin") => $page->server($row, "server_origin"),
+            $page->t("table.player")        => $this->punished_avatar($player_name, $row),
+            $page->t("table.executor")      => $this->moderator_avatar($row),
+            $page->t("table.reason")        => $page->clean($row['reason']),
+            $page->t("table.date")          => $page->millis_to_date($row['time']),
+            $page->t("table.server.scope")  => $page->server($row),
+            $page->t("table.server.origin") => $page->server($row, "server_origin"),
         );
     }
 }
@@ -119,15 +114,15 @@ if ((substr($_SERVER['SCRIPT_NAME'], -strlen("info.php"))) !== "info.php") {
     return;
 }
 
-isset($_GET['type'], $_GET['id']) && is_string($_GET['type']) && is_string($_GET['id']) or die($page->t("info_error_missingarg"));
+isset($_GET['type'], $_GET['id']) && is_string($_GET['type']) && is_string($_GET['id']) or die($page->t("error.missing-args"));
 
 $type = $_GET['type'];
 $id = $_GET['id'];
 $page = new Page($type);
 
-($page->type !== null) or die($page->t("info_error_unknown"));
+($page->type !== null) or die($page->t("info.error.type.invalid"));
 
-filter_var($id, FILTER_VALIDATE_INT) or die($page->t("info_error_invalidid"));
+filter_var($id, FILTER_VALIDATE_INT) or die($page->t("info.error.id.invalid"));
 
 $id = (int)$id;
 
@@ -139,16 +134,16 @@ $query = "SELECT $sel FROM $table WHERE id=? LIMIT 1";
 $st = $page->conn->prepare($query);
 
 if ($st->execute(array($id))) {
-    ($row = $st->fetch()) or die($page->t("info_error_notfound1") . $type . $page->t("info_error_notfound2"));
+    ($row = $st->fetch()) or die(str_replace("{type}", $type, $page->t("info.error.id.no-result")));
     $st->closeCursor();
 
     $player_name = $page->get_name($row['uuid']);
 
-    ($player_name !== null) or die($page->t("info_error_notplayer"));
+    ($player_name !== null) or die(str_replace("{name}", $player_name, $page->t("error.name.unseen")));
 
     $info = Info::create($row, $page, $type);
 
-    $name = $info->name();
+    $name = $page->t("generic.$type");
     $permanent = $info->permanent();
 
     $page->name = $page->title = "$name #$id";
@@ -160,12 +155,12 @@ if ($st->execute(array($id))) {
         $style = 'style="margin-left: 13px; font-size: 16px;"';
         $active = $page->active($row);
         if ($active === true) {
-            $header .= "<span $style class='label label-danger'>" . $page->t("info_tag_active") . "</span>";
+            $header .= "<span $style class='label label-danger'>" . $page->t("generic.active") . "</span>";
             if ($permanent) {
-                $header .= "<span $style class='label label-danger'>" . $page->t("info_tag_permanent") . "</span>";
+                $header .= "<span $style class='label label-danger'>" . $page->t("generic.permanent") . "</span>";
             }
         } else {
-            $header .= "<span $style class='label label-warning'>" . $page->t("info_tag_inactive") . "</span>";
+            $header .= "<span $style class='label label-warning'>" . $page->t("generic.inactive") . "</span>";
         }
     }
     $page->print_header(true, $header);

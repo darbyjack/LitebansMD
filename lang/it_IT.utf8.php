@@ -4,43 +4,43 @@ class Lang {
     public function __construct() {
         $array = array();
         $this->array = &$array;
-        $array["index_welcome"] = 'Benvenuto nella lista ban di {server}.';
+        $array["index.welcome.main"] = 'Benvenuto nella lista ban di {server}.';
         $array["index_allsins"] = 'Qui ci saranno tutte le punizioni dei giocatori.';
 
-        $array["header_index"] = 'Home';
-        $array["header_bans"] = 'Ban';
-        $array["header_mutes"] = 'Mute';
-        $array["header_warnings"] = 'Warning';
-        $array["header_kicks"] = 'Kick';
+        $array["title.index"] = 'Home';
+        $array["title.bans"] = 'Ban';
+        $array["title.mutes"] = 'Mute';
+        $array["title.warnings"] = 'Warning';
+        $array["title.kicks"] = 'Kick';
 
-        $array["page_perm_ban"] = 'Ban Permanente';
-        $array["page_perm_mute"] = 'Mute Permanente';
-        $array["page_perm_warn"] = 'Permanente';
-        $array["page_expire_ban"] = '(Sbannato)';
-        $array["page_expire_ban_by"] = '(Sbannato da {name})';
-        $array["page_expire_mute"] = '(Smutato)';
-        $array["page_expire_mute_by"] = '(Smutato da {name})';
-        $array["page_expire"] = '(Terminato)';
+        $array["page.permanent.ban"] = 'Ban Permanente';
+        $array["page.permanent.mute"] = 'Mute Permanente';
+        $array["page.permanent.warning"] = 'Permanente';
+        $array["page.expired.ban"] = '(Sbannato)';
+        $array["page.expired.ban-by"] = '(Sbannato da {name})';
+        $array["page.expired.mute"] = '(Smutato)';
+        $array["page.expired.mute-by"] = '(Smutato da {name})';
+        $array["page.expired.warning"] = '(Terminato)';
         $array["page_title_ban"] = 'Ban';
         $array["page_title_mute"] = 'Mute';
         $array["page_title_warn"] = 'Warning';
         $array["page_title_kick"] = 'Kick';
-        $array["page_check_user"] = "Giocatore";
-        $array["page_check_submit"] = "Controlla";
-        $array["page_page"] = "Pagina";
+        $array["check.username"] = "Giocatore";
+        $array["action.check"] = "Controlla";
+        $array["table.pager.number"] = "Pagina";
 
-        $array["check_notjoin"] = "non è mai entrato nel server.";
+        $array["error.name.unseen"] = "non è mai entrato nel server.";
 
-        $array["history_recentby"] = "punizioni recenti di ";
-        $array["history_recentfor"] = "punizioni recenti per  ";
-        $array["history_tabletype"] = "Tipo";
+        $array["title.staff-history"] = "punizioni recenti di ";
+        $array["title.player-history"] = "punizioni recenti per  ";
+        $array["history.type"] = "Tipo";
         $array["history_tableplayer"] = "Giocatore";
         $array["history_tablemoderator"] = "Moderatore";
         $array["history_tablereason"] = "Motivo";
         $array["history_tabledate"] = "Data";
         $array["history_tableexpires"] = "Termina";
-        $array["history_nopunishments"] = "Nessuna punizione trovata.";
-        $array["history_returnto"] = "Torna a";
+        $array["history.error.uuid.no-result"] = "Nessuna punizione trovata.";
+        $array["action.return"] = "Torna a";
 
         $array["info_banned_player"] = "Giocatore bannato";
         $array["info_banned_by"] = "Bannato da";
@@ -84,15 +84,15 @@ class Lang {
         $array["warns_by"] = "Avvertito da";
         $array["warns_reason"] = "Motivo";
         $array["warns_when"] = "Avvertuti il";
-        $array["warns_receive"] = "Avvertimento ricevuto";
+        $array["warnings.received"] = "Avvertimento ricevuto";
 
         // Errors which are only accessible from invalid user input or removed pages.
-        $array["check_invalid"] = "Nome invalido.";
-        $array["history_missinguuid"] = "Argomenti mancanti (uuid).";
-        $array["info_error_missingarg"] = "Argomenti mancanti (type, id).";
-        $array["info_error_unknown"] = "Pagina richiesta sconosciuta.";
-        $array["info_error_invalidid"] = "ID Invalido";
-        $array["info_error_notfound1"] = "Errore: ";
+        $array["error.name.invalid"] = "Nome invalido.";
+        $array["history.error.uuid.required"] = "Argomenti mancanti (uuid).";
+        $array["info.error.type-id.required"] = "Argomenti mancanti (type, id).";
+        $array["info.error.type.invalid"] = "Pagina richiesta sconosciuta.";
+        $array["info.error.id.invalid"] = "ID Invalido";
+        $array["info.error.id.no-result"] = "Errore: ";
         $array["info_error_notfound2"] = " Non trovato nel database.";
         $array["info_error_notplayer"] = "Errore: Giocatore non trovato";
         $array["history_playernotfound"] = "Giocatore non trovato nel database.";

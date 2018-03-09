@@ -4,43 +4,43 @@ class Lang {
     public function __construct() {
         $array = array();
         $this->array = &$array;
-        $array["index_welcome1"] = "Welkom op {server}'s Ban Lijst.";
-        $array["index_welcome2"] = 'Hier staan al onze uitgedeelde straffen.';
+        $array["index.welcome1"] = "Welkom op {server}'s Ban Lijst.";
+        $array["index.welcome.sub"] = 'Hier staan al onze uitgedeelde straffen.';
 
-        $array["header_index"] = 'Home';
-        $array["header_bans"] = 'Bans';
-        $array["header_mutes"] = 'Mutes';
-        $array["header_warnings"] = 'Waarschuwingen';
-        $array["header_kicks"] = 'Kicks';
+        $array["title.index"] = 'Home';
+        $array["title.bans"] = 'Bans';
+        $array["title.mutes"] = 'Mutes';
+        $array["title.warnings"] = 'Waarschuwingen';
+        $array["title.kicks"] = 'Kicks';
 
-        $array["page_perm_ban"] = 'Permanente Ban';
-        $array["page_perm_mute"] = 'Permanente Mute';
-        $array["page_perm_warn"] = 'Permanent';
-        $array["page_expire_ban"] = '(Unbanned)';
-        $array["page_expire_ban_by"] = '(Unbanned door {name})';
-        $array["page_expire_mute"] = '(Unmuted)';
-        $array["page_expire_mute_by"] = '(Unmuted door {name})';
-        $array["page_expire"] = '(Verlopen)';
+        $array["page.permanent.ban"] = 'Permanente Ban';
+        $array["page.permanent.mute"] = 'Permanente Mute';
+        $array["page.permanent.warning"] = 'Permanent';
+        $array["page.expired.ban"] = '(Unbanned)';
+        $array["page.expired.ban-by"] = '(Unbanned door {name})';
+        $array["page.expired.mute"] = '(Unmuted)';
+        $array["page.expired.mute-by"] = '(Unmuted door {name})';
+        $array["page.expired.warning"] = '(Verlopen)';
         $array["page_title_ban"] = 'Bans';
         $array["page_title_mute"] = 'Mutes';
         $array["page_title_warn"] = 'Waarschuwingen';
         $array["page_title_kick"] = 'Kicks';
-        $array["page_check_user"] = "Player";
-        $array["page_check_submit"] = "Check";
-        $array["page_page"] = "Pagina";
+        $array["check.username"] = "Player";
+        $array["action.check"] = "Check";
+        $array["table.pager.number"] = "Pagina";
 
-        $array["check_notjoin"] = "heeft niet eerder deelgenomen.";
+        $array["error.name.unseen"] = "heeft niet eerder deelgenomen.";
 
-        $array["history_recentby"] = "Recente straffen door ";
-        $array["history_recentfor"] = "Recente straffen voor ";
-        $array["history_tabletype"] = "Type";
+        $array["title.staff-history"] = "Recente straffen door ";
+        $array["title.player-history"] = "Recente straffen voor ";
+        $array["history.type"] = "Type";
         $array["history_tableplayer"] = "Player";
         $array["history_tablemoderator"] = "Moderator";
         $array["history_tablereason"] = "Rede";
         $array["history_tabledate"] = "Datum";
         $array["history_tableexpires"] = "Verloopt";
-        $array["history_nopunishments"] = "Geen straffen gevonden.";
-        $array["history_returnto"] = "Terug naar";
+        $array["history.error.uuid.no-result"] = "Geen straffen gevonden.";
+        $array["action.return"] = "Terug naar";
 
         $array["info_banned_player"] = "Verbannen speler";
         $array["info_banned_by"] = "Geband door";
@@ -84,15 +84,15 @@ class Lang {
         $array["warns_by"] = "Gewaarschuwd door";
         $array["warns_reason"] = "Rede";
         $array["warns_when"] = "Gewaarschuwing tot";
-        $array["warns_receive"] = "Waarschuwing ontvangen";
+        $array["warnings.received"] = "Waarschuwing ontvangen";
 
         // Errors which are only accessible from invalid user input or removed pages.
-        $array["check_invalid"] = "Ongeldige naam.";
-        $array["history_missinguuid"] = "Missende parameter (uuid).";
-        $array["info_error_missingarg"] = "Missende parameter (type, id).";
-        $array["info_error_unknown"] = "Ongebekende pagina type opgevraagd.";
-        $array["info_error_invalidid"] = "Ongeldig ID";
-        $array["info_error_notfound1"] = "Error: ";
+        $array["error.name.invalid"] = "Ongeldige naam.";
+        $array["history.error.uuid.required"] = "Missende parameter (uuid).";
+        $array["info.error.type-id.required"] = "Missende parameter (type, id).";
+        $array["info.error.type.invalid"] = "Ongebekende pagina type opgevraagd.";
+        $array["info.error.id.invalid"] = "Ongeldig ID";
+        $array["info.error.id.no-result"] = "Error: ";
         $array["info_error_notfound2"] = " niet gevonden in de database.";
         $array["info_error_notplayer"] = "Error: Spelernaam niet gevonden.";
         $array["history_playernotfound"] = "Speler niet gevonden in de database.";

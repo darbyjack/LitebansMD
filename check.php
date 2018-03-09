@@ -6,7 +6,7 @@ class Check {
         $page = new Page("check", false);
         // validate user input
         if (strlen($name) > 16 || !preg_match("/^[0-9a-zA-Z_]{1,16}$/", $name)) {
-            $this->println($page->t("check_invalid"));
+            $this->println($page->t("error.name.invalid"));
             return;
         }
         $history = $page->settings->table['history'];
@@ -32,7 +32,7 @@ class Check {
                     return;
                 }
                 $name = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
-                $this->println("$name " . $page->t("check_notjoin"));
+                $this->println(str_replace("{name}", $name, $page->t("error.name.unseen")));
                 return;
             }
             $href = "history.php?uuid=$uuid";
