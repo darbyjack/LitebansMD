@@ -20,71 +20,26 @@ class Lang {
         $array["page.expired.mute"] = '(Odmlčen)';
         $array["page.expired.mute-by"] = '(Odmlčen kým {name})';
         $array["page.expired.warning"] = '(Vypršel)';
-        $array["page_title_ban"] = 'Bany';
-        $array["page_title_mute"] = 'Umlčení';
-        $array["page_title_warn"] = 'Varování';
-        $array["page_title_kick"] = 'Vyhození';
+
         $array["check.username"] = "Hráč";
         $array["action.check"] = "Ověřit";
         $array["table.pager.number"] = "Strana";
         $array["error.name.invalid"] = "Neplatné zadání";
         $array["error.name.unseen"] = "u nás ještě nebyl";
         $array["history.error.uuid.required"] = "Chybějící argument (uuid)";
-        $array["history_playernotfound"] = "Hráč nenalezen v databázi";
+
         $array["title.staff-history"] = "Nedávné tresty od ";
         $array["title.player-history"] = "Nedávne tresty pro ";
         $array["history.type"] = "Typ";
-        $array["history_tableplayer"] = "Hráč";
-        $array["history_tablemoderator"] = "Admin";
-        $array["history_tablereason"] = "Důvod";
-        $array["history_tabledate"] = "Datum";
-        $array["history_tableexpires"] = "Vyprší";
+
         $array["history.error.uuid.no-result"] = "Nenalezeny žádné tresty";
         $array["action.return"] = "Vrátit se na";
-        $array["info_banned_player"] = "Zabanovaný hráč";
-        $array["info_banned_by"] = "Zabanován kým";
-        $array["info_banned_reason"] = "Důvod banu";
-        $array["info_banned_when"] = "Zabanován do";
-        $array["info_banned_expiry"] = "Zabanován do kdy";
-        $array["info_muted_player"] = "Umlčený hráč";
-        $array["info_muted_by"] = "Umlčen kým";
-        $array["info_muted_reason"] = "Důvod umlčení";
-        $array["info_muted_when"] = "Umlčen kdy";
-        $array["info_muted_expiry"] = "Umlčen do kdy";
-        $array["info_warn_name"] = "Varování";
-        $array["info_warn_player"] = "Varovaný hráč";
-        $array["info_warn_by"] = "Varován kým";
-        $array["info_warn_reason"] = "Důvod varování";
-        $array["info_warn_when"] = "Varován kdy";
-        $array["info_warn_expiry"] = "Varování vyprší";
-        $array["info_kick_player"] = "Vyhozený hráč";
-        $array["info_kick_by"] = "Vyhozen kým";
-        $array["info_kick_reason"] = "Důvod vyhození";
-        $array["info_kick_when"] = "Vyhozen kdy";
+
         $array["info.error.type-id.required"] = "Neplatné argumenty (typ, id)";
         $array["info.error.type.invalid"] = "Vyžádána neznámá stránka";
         $array["info.error.id.invalid"] = "Neplatné ID";
         $array["info.error.id.no-result"] = "Chyba: ";
-        $array["info_error_notfound2"] = " nenalezen v databázi";
-        $array["info_error_notplayer"] = "Chyba: Jméno hráče nenalezeno";
-        $array["bans_player"] = "Jméno";
-        $array["bans_by"] = "Zabanován kým";
-        $array["bans_reason"] = "Důvod banu";
-        $array["bans_when"] = "Zabanován kdy";
-        $array["bans_expiry"] = "Zabanován do kdy";
-        $array["kicks_player"] = "Jméno";
-        $array["kicks_by"] = "Vyhozen kým";
-        $array["kicks_reason"] = "Důvod vyhození";
-        $array["kicks_when"] = "Vyhozen kdy";
-        $array["mutes_player"] = "Jméno";
-        $array["mutes_by"] = "Umlčen kým";
-        $array["mutes_reason"] = "Důvod umlčení";
-        $array["mutes_when"] = "Umlčen kdy";
-        $array["mutes_expiry"] = "Umlčen do kdy";
-        $array["warns_player"] = "Jméno";
-        $array["warns_by"] = "Varován kým";
-        $array["warns_reason"] = "Důvod varování";
-        $array["warns_when"] = "Varován kdy";
+
         $array["warnings.received"] = "Varování doručeno";
     }
 }
