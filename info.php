@@ -154,6 +154,18 @@ if ($st->execute(array($id))) {
     if (!($info instanceof KickInfo)) {
         $style = 'style="margin-left: 13px; font-size: 16px;"';
         $active = $page->active($row);
+        $ipban = $page->active($row, 'ipban');
+        if ($ipban === true) {
+            $idx = null;
+            if ($info instanceof BanInfo) {
+                $idx = "generic.ipban";
+            } else if ($info instanceof MuteInfo) {
+                $idx = "generic.ipmute";
+            }
+            if ($idx !== null) {
+                $header .= "<span $style class='label label-danger'>" . $page->t($idx) . "</span>";
+            }
+        }
         if ($active === true) {
             $header .= "<span $style class='label label-danger'>" . $page->t("generic.active") . "</span>";
             if ($permanent) {

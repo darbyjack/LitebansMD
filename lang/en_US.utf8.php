@@ -23,6 +23,8 @@ class DefaultLang {
 
         $array["generic.ban"] = "Ban";
         $array["generic.mute"] = "Mute";
+        $array["generic.ipban"] = "IP " . $array["generic.ban"];
+        $array["generic.ipmute"] = "IP " . $array["generic.mute"];
         $array["generic.warn"] = "Warning";
         $array["generic.kick"] = "Kick";
         $array["generic.type"] = "Type";
