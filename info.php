@@ -120,9 +120,9 @@ $type = $_GET['type'];
 $id = $_GET['id'];
 $page = new Page($type);
 
-($page->type !== null) or die($page->t("info.error.type.invalid"));
+($page->type !== null) or die("Unknown page type requested");
 
-filter_var($id, FILTER_VALIDATE_INT) or die($page->t("info.error.id.invalid"));
+filter_var($id, FILTER_VALIDATE_INT) or die("Invalid ID");
 
 $id = (int)$id;
 

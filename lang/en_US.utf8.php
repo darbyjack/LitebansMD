@@ -54,8 +54,6 @@ class DefaultLang {
         $array["error.name.unseen"] = "{name} has not joined before.";
         $array["error.name.invalid"] = "Invalid name.";
         $array["history.error.uuid.no-result"] = "No punishments found.";
-        $array["info.error.type.invalid"] = "Unknown page type requested.";
-        $array["info.error.id.invalid"] = "Invalid ID";
         $array["info.error.id.no-result"] = "Error: {type} not found in database.";
     }
 }
