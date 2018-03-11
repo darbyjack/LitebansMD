@@ -11,7 +11,7 @@ class Lang {
 }
 
 ```
-- Translate all array assignments, e.g. `$array["page.permanent.ban"] = 'Baneo Permanente';`
+- Translate all array assignments, e.g. `$array["title.bans"] = 'Baneos';`
 - Edit settings.php, set `this->lang` to your locale. Example: `$this->lang = 'es_ES.utf8';`
 
 All messages not translated by the main locale will be translated by the fallback locale (en_US.utf8).
