@@ -158,11 +158,9 @@ try {
 
             $page->set_info($page->type_info($type));
 
-            $style = 'style="font-size: 13px;"';
-
             $label_type = $page->type;
             $label_name = Info::create($row, $page, $label_type)->name(); //ucfirst($label_type);
-            $label = "<span $style class='label label-$label_type'>$label_name</span>";
+            $label = "<span class='label litebans-label-history litebans-label-$label_type'>$label_name</span>";
 
             $page->print_table_rows($row, array(
                 $page->t("generic.type")      => $label,

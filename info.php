@@ -152,7 +152,6 @@ if ($st->execute(array($id))) {
     $header = $page->name;
 
     if (!($info instanceof KickInfo)) {
-        $style = 'style="margin-left: 13px; font-size: 16px;"';
         $active = $page->active($row);
         $ipban = $page->active($row, 'ipban');
         if ($ipban === true) {
@@ -163,16 +162,16 @@ if ($st->execute(array($id))) {
                 $idx = "generic.ipmute";
             }
             if ($idx !== null) {
-                $header .= "<span $style class='label label-danger'>" . $page->t($idx) . "</span>";
+                $header .= "<span class='label label-danger litebans-label-info'>" . $page->t($idx) . "</span>";
             }
         }
         if ($active === true) {
-            $header .= "<span $style class='label label-danger'>" . $page->t("generic.active") . "</span>";
+            $header .= "<span class='label label-danger litebans-label-info'>" . $page->t("generic.active") . "</span>";
             if ($permanent) {
-                $header .= "<span $style class='label label-danger'>" . $page->t("generic.permanent") . "</span>";
+                $header .= "<span class='label label-danger litebans-label-info'>" . $page->t("generic.permanent") . "</span>";
             }
         } else {
-            $header .= "<span $style class='label label-warning'>" . $page->t("generic.inactive") . "</span>";
+            $header .= "<span class='label label-warning litebans-label-info'>" . $page->t("generic.inactive") . "</span>";
         }
     }
     $page->print_header(true, $header);

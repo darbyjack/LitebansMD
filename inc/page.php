@@ -404,20 +404,13 @@ class Page {
         $type = $this->type;
         echo "<tr>";
         foreach ($array as $header => $text) {
-            $style = "";
-            if ($header === $this->t("bans_reason") || $header === $this->t("mutes_reason") || $header === $this->t("warns_reason") || $header == $this->t("kicks_reason")) {
-                $style = "style=\"width: 30%;\"";
-                if ($text === "") {
-                    $text = "-";
-                }
-            }
             $a = "a";
             if ($header === $this->t("warnings.received")) {
                 $icon = ($text !== "0") ? "glyphicon-ok" : "glyphicon-remove";
                 $a .= " class=\"glyphicon $icon\" aria-hidden=true";
                 $text = "";
             }
-            echo "<td $style><$a href=\"info.php?type=$type&id=$id\">$text</a></td>";
+            echo "<td><$a href=\"info.php?type=$type&id=$id\">$text</a></td>";
         }
         echo "</tr>";
     }
@@ -425,7 +418,7 @@ class Page {
     function table_print_headers($headers) {
         echo "<thead><tr>";
         foreach ($headers as $header) {
-            echo "<th><div style=\"text-align: center;\">$header</div></th>";
+            echo "<th>$header</th>";
         }
         echo "<tbody>";
     }
@@ -438,9 +431,9 @@ class Page {
             echo '<div class="container">';
         }
 
-        echo "<div class=\"row\"><div style=\"text-align: center;\" class=\"col-lg-12\"><h1 class=\"modal-header\">$title</h1></div></div>";
+        echo "<div class=\"row\"><div class=\"col-lg-12\"><h1 class=\"modal-header\">$title</h1></div></div>";
         if ($container_start) {
-            echo '<div class="row"><div style="text-align: center;" class="col-lg-12">';
+            echo '<div class="row"><div class="col-lg-12">';
         }
     }
 
@@ -493,7 +486,7 @@ class Page {
         if ($next_active) {
             $pager_next = "<a href=\"$page?page={$next}{$args}\">$pager_next</a>";
         }
-        $pager_count = '<div style=\"margin-top: 32px;\"><div style=\"text-align: center; font-size:15px;\">' . $this->t("table.pager.number") . ' ' . $cur . '/' . $pages . '</div></div>';
+        $pager_count = '<div><div class="litebans-pager-number">' . $this->t("table.pager.number") . ' ' . $cur . '/' . $pages . '</div></div>';
         echo "$pager_prev $pager_next $pager_count";
     }
 

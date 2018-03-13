@@ -1,16 +1,19 @@
-.noselect {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
 .avatar {
     margin-bottom: 5px;
     margin-right: 5px;
     border-radius: 2px;
+}
+
+/* header */
+
+.col-lg-12 {
+    text-align: center;
+}
+
+/* tables */
+
+th {
+    text-align: center;
 }
 
 table tr td {
@@ -19,8 +22,27 @@ table tr td {
     vertical-align: middle !important;
 }
 
+/* table links */
+a,
+a:hover,
+a:focus {
+    text-decoration: none !important;
+}
+
+tr.hover {
+    cursor: pointer;
+}
+
+/* pager */
+
 .litebans-pager {
     font-size: 30px;
+}
+
+.litebans-pager-number {
+    margin-top: 32px;
+    text-align: center;
+    font-size: 15px;
 }
 
 .litebans-pager-left {
@@ -39,29 +61,44 @@ table tr td {
     color: transparent;
 }
 
-/* table links */
-a,
-a:hover,
-a:focus {
-    text-decoration: none !important;
+/* index.php */
+.litebans-index {
+    text-align: center;
 }
 
-tr.hover {
-    cursor: pointer;
+/* info.php */
+.litebans-label-info {
+    margin-left: 13px;
+    font-size: 17px;
 }
 
-.label-ban {
+/* history.php */
+.litebans-label-history {
+    font-size: 13px;
+}
+
+.litebans-label-ban {
     background-color: darkred;
 }
 
-.label-mute {
+.litebans-label-mute {
     background-color: dimgrey;
 }
 
-.label-warn {
+.litebans-label-warn {
     background-color: darkorange;
 }
 
-.label-kick {
+.litebans-label-kick {
     background-color: tomato;
+}
+
+/* prevent mouse selection */
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
