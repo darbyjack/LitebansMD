@@ -205,7 +205,7 @@ class Page {
         $img = "<img class='avatar noselect' src='$src'/>";
         $str = "{$img}$name";
         if ($name_under) {
-            $str = "{$img}<br>$name";
+            $str = "{$img}<br class='noselect'>$name";
             return "<p align='center'>$str</p>";
         }
         if ($name_left) {
