@@ -178,18 +178,9 @@ if ($st->execute(array($id))) {
 
     $map = $info->basic_info($row, $player_name);
 
-    $permanent_val = $info->page->permanent[$type];
-
     $page->table_begin();
 
     foreach ($map as $key => $val) {
-        if ($permanent &&
-            ($key === $page->t("info_banned_expiry") || $key === $page->t("info_muted_expiry") || $key === $page->t("info_warn_expiry")) &&
-            $val === $permanent_val
-        ) {
-            // skip "Expires" row if punishment is permanent
-            continue;
-        }
         echo "<tr><td>$key</td><td>$val</td></tr>";
     }
 
