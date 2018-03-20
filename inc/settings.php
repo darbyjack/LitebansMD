@@ -235,7 +235,7 @@ final class Settings {
         date_default_timezone_set("UTC"); // temporarily set UTC timezone for testing purposes
 
         $fail = false;
-        $test = strftime($this->date_format, 0);
+        $test = gmstrftime($this->date_format, 0);
         if ($test == false) {
             ob_start();
             var_dump($test);
@@ -244,7 +244,7 @@ final class Settings {
             $fail = true;
         }
 
-        $test = strftime("%Y-%m-%d %H:%M", 0);
+        $test = gmstrftime("%Y-%m-%d %H:%M", 0);
         if ($test !== "1970-01-01 00:00") {
             ob_start();
             var_dump($test);
