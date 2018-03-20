@@ -240,7 +240,7 @@ final class Settings {
             ob_start();
             var_dump($test);
             $testdump = ob_get_clean();
-            echo("Error: date_format test failed. strftime(\"" . $this->date_format . "\",0) returned " . $testdump);
+            echo("Error: date_format test failed. gmstrftime(\"" . $this->date_format . "\",0) returned " . $testdump);
             $fail = true;
         }
 
@@ -249,7 +249,7 @@ final class Settings {
             ob_start();
             var_dump($test);
             $testdump = ob_get_clean();
-            echo("Assertion failed: strftime(\"%Y-%m-%d %H:%M\",0) != \"1970-01-01 00:00\"<br>");
+            echo("Assertion failed: gmstrftime(\"%Y-%m-%d %H:%M\",0) != \"1970-01-01 00:00\"<br>");
             echo("Actual result: " . $testdump);
             $fail = true;
         }
