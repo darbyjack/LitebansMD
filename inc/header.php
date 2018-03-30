@@ -33,7 +33,7 @@ function __construct($page) {
 }
 
 function navbar($links) {
-    echo '<ul class="navbar-nav mr-auto mt-2 mt-lg-0">';
+    echo '<ul class="navbar-nav mr-auto">';
     foreach ($links as $page => $title) {
         $li = "li";
         $class = "nav-item";
@@ -43,7 +43,7 @@ function navbar($links) {
         $li .= " class=\"$class\"";
 
         if ($this->page->settings->header_show_totals && isset($this->count[$page])) {
-            $title .= " <span class=\"badge\">";
+            $title .= " <span class=\"badge badge-info\">";
             $title .= $this->count[$page];
             $title .= "</span>";
         }
@@ -78,8 +78,8 @@ $settings = $this->page->settings;
 
 
 <header role="banner">
-    <div class="container">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+        <div class="container">
             <a class="navbar-brand" href="<?php echo $settings->name_link; ?>">
                 <?php echo $settings->name; ?>
             </a>
@@ -98,12 +98,14 @@ $settings = $this->page->settings;
                     "kicks.php"    => $this->page->t("title.kicks"),
                 ));
                 ?>
-                <div class="my-2 my-lg-0">
-                    <a href="https://www.spigotmc.org/resources/litebans.3715/" class="navbar-text"
-                       target="_blank">&copy; LiteBans</a>
-                </div>
-        </nav>
-    </div>
+                <ul class="nav navbar-nav my-2 my-lg-0">
+                    <li class="nav-item">
+                        <a href="https://www.spigotmc.org/resources/litebans.3715/" class="nav-link"
+                           target="_blank">&copy; LiteBans</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 </header>
 
 <?php
