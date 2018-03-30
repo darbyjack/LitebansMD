@@ -79,7 +79,7 @@ $settings = $this->page->settings;
 
 <header role="banner">
     <div class="container">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
             <a class="navbar-brand" href="<?php echo $settings->name_link; ?>">
                 <?php echo $settings->name; ?>
             </a>
