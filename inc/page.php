@@ -431,7 +431,7 @@ class Page {
             echo '<div class="container">';
         }
 
-        echo "<div class=\"row\"><div class=\"col-lg-12\"><h1 class=\"modal-header\">$title</h1></div></div>";
+        echo "<div class=\"row\"><div class=\"col-lg-12\"><h1 class=\"modal-header litebans-header\">$title</h1></div></div>";
         if ($container_start) {
             echo '<div class="row"><div class="col-lg-12">';
         }
@@ -447,6 +447,7 @@ class Page {
              <script type="text/javascript">function captureForm(b){var o=$("#output");o.removeClass("in");var x=setTimeout(function(){o.html("<br>")}, 150);$.ajax({type:"GET",url:"check.php?name="+$("#user").val()+"&table=' . $table . '"}).done(function(c){clearTimeout(x);o.html(c);o.addClass("in")});b.preventDefault();return false};</script>
              <div id="output" class="success fade" data-alert="alert" style="margin-left: 15px;"><br></div>
          </div>
+         <br>
          ';
     }
 

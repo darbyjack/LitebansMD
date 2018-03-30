@@ -5,6 +5,10 @@
 }
 
 /* header */
+.litebans-header {
+    text-align: center;
+    display: block;
+}
 
 .col-lg-12 {
     text-align: center;
@@ -26,7 +30,7 @@ table tr td {
 a,
 a:hover,
 a:focus {
-    text-decoration: none !important;
+    text-decoration: none;
 }
 
 tr.hover {
@@ -40,7 +44,7 @@ tr.hover {
 }
 
 .litebans-pager-number {
-    margin-top: 32px;
+    margin-top: 24px;
     text-align: center;
     font-size: 15px;
 }
