@@ -33,18 +33,21 @@ function __construct($page) {
 }
 
 function navbar($links) {
-    echo '<ul class="nav navbar-nav">';
+    echo '<ul class="navbar-nav mr-auto mt-2 mt-lg-0">';
     foreach ($links as $page => $title) {
         $li = "li";
+        $class = "nav-item";
         if ((substr($_SERVER['SCRIPT_NAME'], -strlen($page))) === $page) {
-            $li .= ' class="active"';
+            $class .= " active";
         }
+        $li .= " class=\"$class\"";
+
         if ($this->page->settings->header_show_totals && isset($this->count[$page])) {
             $title .= " <span class=\"badge\">";
             $title .= $this->count[$page];
             $title .= "</span>";
         }
-        echo "<$li><a href=\"$page\">$title</a></li>";
+        echo "<$li><a class=\"nav-link\" href=\"$page\">$title</a></li>";
     }
     echo '</ul>';
 }
@@ -73,37 +76,36 @@ $settings = $this->page->settings;
     </script>
 </head>
 
-<header class="navbar navbar-default navbar-static-top" role="banner">
+
+<header role="banner">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#litebans-navbar" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <a class="navbar-brand" href="<?php echo $settings->name_link; ?>">
                 <?php echo $settings->name; ?>
             </a>
-        </div>
-        <nav id="litebans-navbar" class="collapse navbar-collapse">
-            <?php
-            $this->navbar(array(
-                "index.php"    => $this->page->t("title.index"),
-                "bans.php"     => $this->page->t("title.bans"),
-                "mutes.php"    => $this->page->t("title.mutes"),
-                "warnings.php" => $this->page->t("title.warnings"),
-                "kicks.php"    => $this->page->t("title.kicks"),
-            ));
-            ?>
-            <div class="nav navbar-nav navbar-right">
-                <a href="https://www.spigotmc.org/resources/litebans.3715/" class="navbar-text"
-                   target="_blank">&copy; LiteBans</a>
-            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#litebans-navbar"
+                    aria-controls="litebans-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="litebans-navbar">
+                <?php
+                $this->navbar(array(
+                    "index.php"    => $this->page->t("title.index"),
+                    "bans.php"     => $this->page->t("title.bans"),
+                    "mutes.php"    => $this->page->t("title.mutes"),
+                    "warnings.php" => $this->page->t("title.warnings"),
+                    "kicks.php"    => $this->page->t("title.kicks"),
+                ));
+                ?>
+                <div class="my-2 my-lg-0">
+                    <a href="https://www.spigotmc.org/resources/litebans.3715/" class="navbar-text"
+                       target="_blank">&copy; LiteBans</a>
+                </div>
         </nav>
     </div>
 </header>
+
 <?php
 }
 }
