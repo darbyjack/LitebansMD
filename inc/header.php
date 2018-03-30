@@ -108,6 +108,7 @@ $settings = $this->page->settings;
         </div>
 </header>
 
+<br><br><br>
 <?php
 }
 }
