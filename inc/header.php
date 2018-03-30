@@ -43,7 +43,7 @@ function navbar($links) {
         $li .= " class=\"$class\"";
 
         if ($this->page->settings->header_show_totals && isset($this->count[$page])) {
-            $title .= " <span class=\"badge badge-info\">";
+            $title .= " <span class=\"badge badge-secondary\">";
             $title .= $this->count[$page];
             $title .= "</span>";
         }
