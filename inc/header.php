@@ -49,10 +49,6 @@ function navbar($links) {
     echo '</ul>';
 }
 
-function autoversion($file) {
-    return $file . "?" . filemtime($file);
-}
-
 function print_header() {
 $settings = $this->page->settings;
 ?>
@@ -65,8 +61,8 @@ $settings = $this->page->settings;
     <meta name="author" content="LiteBans">
     <link rel="shortcut icon" href="inc/img/minecraft.ico">
     <!-- CSS -->
-    <link href="<?php echo $this->autoversion('inc/css/bootstrap.min.css'); ?>" rel="stylesheet">
-    <link href="<?php echo $this->autoversion('inc/css/custom.css'); ?>" rel="stylesheet">
+    <link href="<?php echo $this->page->autoversion('inc/css/bootstrap.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo $this->page->autoversion('inc/css/custom.css'); ?>" rel="stylesheet">
     <script type="text/javascript">
         function withjQuery(f) {
             if (window.jQuery) f();

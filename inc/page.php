@@ -500,6 +500,10 @@ class Page {
         include_once './inc/footer.php';
     }
 
+    function autoversion($file) {
+        return $file . "?" . filemtime($file);
+    }
+
     function table_begin() {
         echo '<table class="table table-striped table-bordered table-condensed">';
     }
