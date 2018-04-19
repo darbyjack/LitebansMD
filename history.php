@@ -203,7 +203,7 @@ try {
 
     if ($from_href !== null) {
         $btnlabel = str_replace("{origin}", $from_title, $page->t("action.return"));
-        echo "<br><a class=\"btn\" href=\"$from_href\">$btnlabel</a> ";
+        echo "<br><a class=\"btn btn-primary\" href=\"$from_href\">$btnlabel</a> ";
     }
 
     $page->print_footer();
