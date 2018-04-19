@@ -74,7 +74,7 @@ tr.hover {
 /* info.php */
 .litebans-info-badges {
     width: 0;
-    display: inline-block;
+    display: inline-flex;
 }
 
 .litebans-label-info {
