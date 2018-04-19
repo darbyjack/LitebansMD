@@ -75,7 +75,7 @@ class Check {
     }
 
     function println($line) {
-        echo "$line<br>";
+        echo "<br>$line<br>";
     }
 }
 
