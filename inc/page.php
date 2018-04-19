@@ -75,7 +75,8 @@ class Page {
         if (array_key_exists($str, $this->defaultlang->array)) {
             return $this->defaultlang->array[$str];
         }
-        return "404";
+//        return "404";
+        return $str;
     }
 
     public function type_info($type) {
