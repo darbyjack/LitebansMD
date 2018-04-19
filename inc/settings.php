@@ -209,7 +209,14 @@ final class Settings {
                 }
             }
             if (strstr($message, "Base table or view not found:")) {
-                $settings->redirect("error/tables-not-found.php");
+                try {
+                    $st = $settings->conn->query("SELECT * FROM " . $settings->table['bans'] . " LIMIT 1;");
+                    $st->fetch();
+                    $st->closeCursor();
+                } catch (PDOException $e) {
+                    $settings->redirect("error/tables-not-found.php");
+                }
+                $settings->redirect("error/outdated-plugin.php");
             }
             if (strstr($message, "Unknown column")) {
                 $settings->redirect("error/outdated-plugin.php");
