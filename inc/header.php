@@ -99,10 +99,8 @@ $settings = $this->page->settings;
                 ));
                 ?>
                 <ul class="nav navbar-nav my-2 my-lg-0">
-                    <li class="nav-item">
-                        <a href="https://www.spigotmc.org/resources/litebans.3715/" class="nav-link"
+                        <a href="https://www.spigotmc.org/resources/litebans.3715/"
                            target="_blank">&copy; LiteBans</a>
-                    </li>
                 </ul>
             </div>
         </div>
