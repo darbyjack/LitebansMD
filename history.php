@@ -163,13 +163,13 @@ try {
             $label = "<span class='badge litebans-label-history litebans-label-$label_type'>$label_name</span>";
 
             $page->print_table_rows($row, array(
-                $page->t("generic.type")      => $label,
-                $page->t("table.player")      => $page->get_avatar($page->get_name($row['uuid']), $row['uuid']),
-                $page->t("table.executor")    => $page->get_avatar($page->get_banner_name($row), $row['banned_by_uuid']),
-                $page->t("table.reason")      => $page->clean($row['reason']),
-                $page->t("table.date")        => $page->millis_to_date($row['time']),
-                $page->t("table.expires")     => $page->expiry($row),
-                $page->t("table.server.name") => $page->server($row),
+                "generic.type"      => $label,
+                "table.player"      => $page->get_avatar($page->get_name($row['uuid']), $row['uuid']),
+                "table.executor"    => $page->get_avatar($page->get_banner_name($row), $row['banned_by_uuid']),
+                "table.reason"      => $page->clean($row['reason']),
+                "table.date"        => $page->millis_to_date($row['time']),
+                "table.expires"     => $page->expiry($row),
+                "table.server.name" => $page->server($row),
                 //'i' => $i . "/" . $limit . "/" . $total,
             ));
         }

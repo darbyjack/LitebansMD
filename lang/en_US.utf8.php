@@ -23,10 +23,21 @@ class DefaultLang {
 
         $array["generic.ban"] = "Ban";
         $array["generic.mute"] = "Mute";
-        $array["generic.ipban"] = "IP " . $array["generic.ban"];
-        $array["generic.ipmute"] = "IP " . $array["generic.mute"];
         $array["generic.warn"] = "Warning";
         $array["generic.kick"] = "Kick";
+
+        $array["generic.banned"] = "Banned";
+        $array["generic.muted"] = "Muted";
+        $array["generic.warned"] = "Warned";
+        $array["generic.kicked"] = "Kicked";
+
+        $array["generic.banned.by"] = $array["generic.banned"] . " By";
+        $array["generic.muted.by"] = $array["generic.muted"] . " By";
+        $array["generic.warned.by"] = $array["generic.warned"] . " By";
+        $array["generic.kicked.by"] = $array["generic.kicked"] . " By";
+
+        $array["generic.ipban"] = "IP " . $array["generic.ban"];
+        $array["generic.ipmute"] = "IP " . $array["generic.mute"];
         $array["generic.type"] = "Type";
         $array["generic.active"] = "Active";
         $array["generic.inactive"] = "Inactive";

@@ -59,6 +59,12 @@ class Page {
             'warn' => $this->t("page.expired.warning"),
             'kick' => null,
         );
+        $this->punished_by = array(
+            'ban'  => $this->t("generic.banned.by"),
+            'mute' => $this->t("generic.muted.by"),
+            'warn' => $this->t("generic.warned.by"),
+            'kick' => $this->t("generic.kicked.by"),
+        );
 
         if ($header) {
             $h = new Header($this);
@@ -393,16 +399,25 @@ class Page {
     }
 
     function print_table_rows($row, $array, $print_headers = true) {
+        $type = $this->type;
         if (!$this->settings->show_server_scope) {
-            unset($array[$this->t("table.server.name")]);
+            unset($array["table.server.name"]);
         }
         if ($print_headers && !$this->table_headers_printed) {
             $headers = array_keys($array);
-            $this->table_print_headers($headers);
+            $headers_translated = array();
+            foreach ($headers as $header) {
+                if ($header === "table.executor" && $this->name !== "history") {
+                    $header = $this->punished_by[$type];
+                } else {
+                    $header = $this->t($header);
+                }
+                array_push($headers_translated, $header);
+            }
+            $this->table_print_headers($headers_translated);
             $this->table_headers_printed = true;
         }
         $id = $row['id'];
-        $type = $this->type;
         echo "<tr>";
         foreach ($array as $header => $text) {
             $a = "a";
