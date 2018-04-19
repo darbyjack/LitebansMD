@@ -6,8 +6,8 @@
 
 /* header */
 .litebans-header {
-    text-align: center;
     display: block;
+    text-align: center;
 }
 
 .col-lg-12 {
@@ -24,6 +24,7 @@ table tr td {
     padding-left: 0;
     padding-right: 0;
     vertical-align: middle !important;
+    text-align: center;
 }
 
 /* table links */
@@ -71,8 +72,13 @@ tr.hover {
 }
 
 /* info.php */
+.litebans-info-badges {
+    width: 0;
+    display: inline-block;
+}
+
 .litebans-label-info {
-    margin-left: 13px;
+    margin-left: 15px;
     font-size: 17px;
 }
 

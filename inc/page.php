@@ -423,7 +423,7 @@ class Page {
         echo "<tbody>";
     }
 
-    function print_header($container_start = true, $title = null) {
+    function print_header($container_start = true, $title = null, $class = "modal-header litebans-header") {
         if ($title === null) {
             $title = $this->title;
         }
@@ -431,9 +431,9 @@ class Page {
             echo '<div class="container">';
         }
 
-        echo "<div class=\"row\"><div class=\"col-lg-12\"><h1 class=\"modal-header litebans-header\">$title</h1></div></div>";
+        echo "<div class=\"row\"><div class=\"col-lg-12\"><h1 class=\"$class\">$title</h1></div>";
         if ($container_start) {
-            echo '<div class="row"><div class="col-lg-12">';
+            echo '</div><div class="row"><div class="col-lg-12">';
         }
     }
 

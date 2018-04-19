@@ -150,6 +150,7 @@ if ($st->execute(array($id))) {
     $page->print_title();
 
     $header = $page->name;
+    $badges = "";
 
     if (!($info instanceof KickInfo)) {
         $active = $page->active($row);
@@ -162,19 +163,19 @@ if ($st->execute(array($id))) {
                 $idx = "generic.ipmute";
             }
             if ($idx !== null) {
-                $header .= "<span class='badge badge-danger litebans-label-info'>" . $page->t($idx) . "</span>";
+                $badges .= "<span class='badge badge-danger litebans-label-info'>" . $page->t($idx) . "</span>";
             }
         }
         if ($active === true) {
-            $header .= "<span class='badge badge-danger litebans-label-info'>" . $page->t("generic.active") . "</span>";
+            $badges .= "<span class='badge badge-danger litebans-label-info'>" . $page->t("generic.active") . "</span>";
             if ($permanent) {
-                $header .= "<span class='badge badge-danger litebans-label-info'>" . $page->t("generic.permanent") . "</span>";
+                $badges .= "<span class='badge badge-danger litebans-label-info'>" . $page->t("generic.permanent") . "</span>";
             }
         } else {
-            $header .= "<span class='badge badge-warning litebans-label-info'>" . $page->t("generic.inactive") . "</span>";
+            $badges .= "<span class='badge badge-warning litebans-label-info'>" . $page->t("generic.inactive") . "</span>";
         }
     }
-    $page->print_header(true, $header);
+    $page->print_header(true, $header . "<div class=\"litebans-info-badges\">$badges</div>");
 
     $map = $info->basic_info($row, $player_name);
 
