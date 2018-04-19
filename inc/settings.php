@@ -26,7 +26,8 @@ final class Settings {
         $this->name = 'LiteBans';
 
         // Clicking on the header name will send you to this address.
-        $this->name_link = '#';
+        // $this->name_link = 'https://example.com';
+        $this->name_link = 'index.php';
 
         // Show server scope column?
         $this->show_server_scope = true;
