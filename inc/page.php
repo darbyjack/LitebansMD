@@ -441,12 +441,12 @@ class Page {
         $table = $this->name;
         echo '
          <div class="row litebans-check">
-             <div style="margin-left: 15px;">
+             <div class="litebans-check litebans-check-form">
                  <form onsubmit="captureForm(event);" class="form-inline"><div class="form-group"><input type="text" class="form-control" id="user" placeholder="' . $this->t("generic.player-name") . '"></div><button type="submit" class="btn btn-primary" style="margin-left: 5px;">' . $this->t("action.check") . '</button></form>
              </div>
              <script type="text/javascript">function captureForm(b){var o=$(".litebans-check-output");o.removeClass("show");var x=setTimeout(function(){o.html("<br>")}, 150);$.ajax({type:"GET",url:"check.php?name="+$("#user").val()+"&table=' . $table . '"}).done(function(c){clearTimeout(x);o.html(c);o.addClass("show")});b.preventDefault();return false};</script>
          </div>
-         <div class="litebans-check litebans-check-output fade" class="success fade" data-alert="alert" style="margin-left: 15px;"></div>
+         <div class="litebans-check litebans-check-output fade" class="success fade" data-alert="alert"></div>
          <br>
          ';
     }

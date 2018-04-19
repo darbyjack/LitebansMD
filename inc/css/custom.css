@@ -43,7 +43,12 @@ tr.hover {
     text-align: left;
 }
 
+.litebans-check-form {
+    margin-left: 15px;
+}
+
 .litebans-check-output {
+    margin-left: 3px;
 }
 
 /* pager */
