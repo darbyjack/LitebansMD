@@ -421,7 +421,7 @@ class Page {
         echo "<tr>";
         foreach ($array as $header => $text) {
             $a = "a";
-            if ($header === $this->t("warnings.received")) {
+            if ($header === "warnings.received") {
                 $icon = ($text !== "0") ? "glyphicon-ok" : "glyphicon-remove";
                 $a .= " class=\"glyphicon $icon\" aria-hidden=true";
                 $text = "";
