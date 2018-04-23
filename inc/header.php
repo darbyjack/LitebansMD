@@ -65,6 +65,7 @@ $settings = $this->page->settings;
     <link rel="shortcut icon" href="inc/img/minecraft.ico">
     <!-- CSS -->
     <link href="<?php echo $this->page->autoversion('inc/css/bootstrap.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo $this->page->autoversion('inc/css/glyphicons.css'); ?>" rel="stylesheet">
     <link href="<?php echo $this->page->autoversion('inc/css/custom.css'); ?>" rel="stylesheet">
     <script type="text/javascript">
         function withjQuery(f) {
