@@ -34,7 +34,7 @@ class Lang {
         $array["history.error.uuid.no-result"] = "Nessuna punizione trovata.";
         $array["action.return"] = "Torna a";
 
-        $array["warnings.received"] = "Avvertimento ricevuto";
+        $array["table.received-warning"] = "Avvertimento ricevuto";
 
         // Errors which are only accessible from invalid user input or removed pages.
         $array["error.name.invalid"] = "Nome invalido.";

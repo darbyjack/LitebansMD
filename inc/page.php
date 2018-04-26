@@ -401,16 +401,16 @@ class Page {
     function print_table_rows($row, $array, $print_headers = true) {
         $type = $this->type;
         if (!$this->settings->show_server_scope) {
-            unset($array["table.server.name"]);
+            unset($array["server.name"]);
         }
         if ($print_headers && !$this->table_headers_printed) {
             $headers = array_keys($array);
             $headers_translated = array();
             foreach ($headers as $header) {
-                if ($header === "table.executor" && $this->name !== "history") {
+                if ($header === "executor" && $this->name !== "history") {
                     $header = $this->punished_by[$type];
                 } else {
-                    $header = $this->t($header);
+                    $header = $this->t("table." . $header);
                 }
                 array_push($headers_translated, $header);
             }
@@ -421,7 +421,7 @@ class Page {
         echo "<tr>";
         foreach ($array as $header => $text) {
             $a = "a";
-            if ($header === "warnings.received") {
+            if ($header === "received-warning") {
                 $icon = ($text !== "0") ? "glyphicon-ok" : "glyphicon-remove";
                 $a .= " class=\"glyphicon $icon\" aria-hidden=true";
                 $text = "";

@@ -35,7 +35,7 @@ class Lang {
         $array["history.error.uuid.no-result"] = "処罰データはありません";
         $array["action.return"] = "戻る";
 
-        $array["warnings.received"] = "受け取った警告";
+        $array["table.received-warning"] = "受け取った警告";
 
         // Errors which are only accessible from invalid user input or removed pages.
         $array["error.name.invalid"] = "プレイヤー名が無効です";

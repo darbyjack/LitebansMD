@@ -35,7 +35,7 @@ class Lang {
         $array["history.error.uuid.no-result"] = "Ingen straf fundet.";
         $array["action.return"] = "Retuner til";
 
-        $array["warnings.received"] = "Modtog Advarelse";
+        $array["table.received-warning"] = "Modtog Advarelse";
 
         // Errors which are only accessible from invalid user input or removed pages.
         $array["error.name.invalid"] = "Ugyldigt Navn.";

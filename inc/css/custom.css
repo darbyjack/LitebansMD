@@ -15,7 +15,6 @@
 }
 
 /* tables */
-
 th {
     text-align: center;
 }
@@ -52,7 +51,6 @@ tr.hover {
 }
 
 /* pager */
-
 .litebans-pager {
     font-size: 30px;
 }

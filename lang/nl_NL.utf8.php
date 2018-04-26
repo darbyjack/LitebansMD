@@ -35,7 +35,7 @@ class Lang {
         $array["history.error.uuid.no-result"] = "Geen straffen gevonden.";
         $array["action.return"] = "Terug naar";
 
-        $array["warnings.received"] = "Waarschuwing ontvangen";
+        $array["table.received-warning"] = "Waarschuwing ontvangen";
 
         // Errors which are only accessible from invalid user input or removed pages.
         $array["error.name.invalid"] = "Ongeldige naam.";

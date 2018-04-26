@@ -40,6 +40,6 @@ class Lang {
         $array["info.error.id.invalid"] = "Neplatné ID";
         $array["info.error.id.no-result"] = "Chyba: ";
 
-        $array["warnings.received"] = "Varování doručeno";
+        $array["table.received-warning"] = "Varování doručeno";
     }
 }

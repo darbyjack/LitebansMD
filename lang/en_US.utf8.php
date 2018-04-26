@@ -45,10 +45,12 @@ class DefaultLang {
         $array["generic.player-name"] = "Player";
 
         $array["table.player"] = $array["generic.player-name"];
+        $array["table.type"] = $array["generic.type"];
         $array["table.executor"] = "Moderator";
         $array["table.reason"] = "Reason";
         $array["table.date"] = "Date";
         $array["table.expires"] = "Expires";
+        $array["table.received-warning"] = "Received Warning";
 
         $array["table.server.name"] = "Server";
         $array["table.server.scope"] = "Server Scope";
@@ -58,8 +60,6 @@ class DefaultLang {
 
         $array["action.check"] = "Check";
         $array["action.return"] = "Return to {origin}";
-
-        $array["warnings.received"] = "Received Warning";
 
         $array["error.missing-args"] = "Missing arguments.";
         $array["error.name.unseen"] = "{name} has not joined before.";
