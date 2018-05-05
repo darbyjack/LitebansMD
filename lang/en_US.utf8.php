@@ -15,11 +15,6 @@ class DefaultLang {
         $array["title.player-history"] = "Recent Punishments for {name}";
         $array["title.staff-history"] = "Recent Punishments by {name}";
 
-        $array["page.expired.ban"] = '(Unbanned)';
-        $array["page.expired.ban-by"] = '(Unbanned by {name})';
-        $array["page.expired.mute"] = '(Unmuted)';
-        $array["page.expired.mute-by"] = '(Unmuted by {name})';
-        $array["page.expired.warning"] = '(Expired)';
 
         $array["generic.ban"] = "Ban";
         $array["generic.mute"] = "Mute";
@@ -41,8 +36,15 @@ class DefaultLang {
         $array["generic.type"] = "Type";
         $array["generic.active"] = "Active";
         $array["generic.inactive"] = "Inactive";
+        $array["generic.expired"] = "Expired";
         $array["generic.permanent"] = "Permanent";
         $array["generic.player-name"] = "Player";
+
+        $array["page.expired.ban"] = '(Unbanned)';
+        $array["page.expired.ban-by"] = '(Unbanned by {name})';
+        $array["page.expired.mute"] = '(Unmuted)';
+        $array["page.expired.mute-by"] = '(Unmuted by {name})';
+        $array["page.expired.warning"] = '(' . $array["generic.expired"] . ')';
 
         $array["table.player"] = $array["generic.player-name"];
         $array["table.type"] = $array["generic.type"];

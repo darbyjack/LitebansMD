@@ -89,7 +89,7 @@ tr.hover {
 }
 
 /* info.php */
-.litebans-info-badges {
+.litebans-label-container {
     width: 0;
     display: inline-flex;
 }
@@ -97,6 +97,31 @@ tr.hover {
 .litebans-label-info {
     margin-left: 15px;
     font-size: 17px;
+}
+
+.litebans-label-inactive {
+    color: #fff;
+    background-color: #f79720
+}
+
+.litebans-label-expired {
+    color: #fff;
+    background-color: #777
+}
+
+.litebans-label-active {
+    color: #fff;
+    background-color: #ee5555
+}
+
+.litebans-label-permanent {
+    color: #fff;
+    background-color: #ee5555
+}
+
+.litebans-label-ipban {
+    color: #fff;
+    background-color: #ee5555
 }
 
 /* history.php */

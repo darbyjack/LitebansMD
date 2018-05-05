@@ -163,19 +163,23 @@ if ($st->execute(array($id))) {
                 $idx = "generic.ipmute";
             }
             if ($idx !== null) {
-                $badges .= "<span class='badge badge-danger litebans-label-info'>" . $page->t($idx) . "</span>";
+                $badges .= "<span class='badge litebans-label-info litebans-label-ipban'>" . $page->t($idx) . "</span>";
             }
         }
         if ($active === true) {
-            $badges .= "<span class='badge badge-danger litebans-label-info'>" . $page->t("generic.active") . "</span>";
+            $badges .= "<span class='badge litebans-label-info litebans-label-active'>" . $page->t("generic.active") . "</span>";
             if ($permanent) {
-                $badges .= "<span class='badge badge-danger litebans-label-info'>" . $page->t("generic.permanent") . "</span>";
+                $badges .= "<span class='badge litebans-label-info litebans-label-permanent'>" . $page->t("generic.permanent") . "</span>";
             }
         } else {
-            $badges .= "<span class='badge badge-warning litebans-label-info'>" . $page->t("generic.inactive") . "</span>";
+            if ($page->is_expired($row)) {
+                $badges .= "<span class='badge litebans-label-info litebans-label-expired'>" . $page->t("generic.expired") . "</span>";
+            } else {
+                $badges .= "<span class='badge litebans-label-info litebans-label-inactive'>" . $page->t("generic.inactive") . "</span>";
+            }
         }
     }
-    $page->print_header(true, $header . "<div class=\"litebans-info-badges\">$badges</div>");
+    $page->print_header(true, $header . "<div class=\"litebans-label-container\">$badges</div>");
 
     $map = $info->basic_info($row, $player_name);
 
