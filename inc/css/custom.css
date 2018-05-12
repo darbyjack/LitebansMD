@@ -101,27 +101,27 @@ tr.hover {
 
 .litebans-label-inactive {
     color: #fff;
-    background-color: #f79720
+    background-color: #f79720;
 }
 
 .litebans-label-expired {
     color: #fff;
-    background-color: #777
+    background-color: #777;
 }
 
 .litebans-label-active {
     color: #fff;
-    background-color: #ee5555
+    background-color: #ee5555;
 }
 
 .litebans-label-permanent {
     color: #fff;
-    background-color: #ee5555
+    background-color: #ee5555;
 }
 
 .litebans-label-ipban {
     color: #fff;
-    background-color: #ee5555
+    background-color: #ee5555;
 }
 
 /* history.php */
