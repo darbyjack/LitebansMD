@@ -27,7 +27,7 @@ abstract class Info {
     }
 
     function name() {
-        return ucfirst($this->page->type);
+        return $this->page->t("generic." . $this->page->type);
     }
 
     function permanent() {
