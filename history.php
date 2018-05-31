@@ -116,12 +116,12 @@ try {
         (SELECT COUNT(*) FROM $t_bans WHERE $field=:uuid0) +
         (SELECT COUNT(*) FROM $t_mutes WHERE $field=:uuid1) +
         (SELECT COUNT(*) FROM $t_warnings WHERE $field=:uuid2) +
-        (SELECT COUNT(*) FROM $t_kicks WHERE $field=:uuid3) as total
+        (SELECT COUNT(*) FROM $t_kicks WHERE $field=:uuid3)
     ");
     for ($i = 0; $i <= 3; $i++) $count_st->bindParam(":uuid$i", $uuid, PDO::PARAM_STR);
 
-    if ($count_st->execute() && ($row = $count_st->fetch()) !== null) {
-        $total = $row['total'];
+    if ($count_st->execute() && ($row = $count_st->fetch(PDO::FETCH_NUM)) !== null) {
+        $total = $row[0];
     }
     $count_st->closeCursor();
 
