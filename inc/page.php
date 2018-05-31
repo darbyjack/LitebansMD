@@ -158,7 +158,7 @@ class Page {
 
             $st->execute();
 
-            $rows = $st->fetchAll();
+            $rows = $st->fetchAll(PDO::FETCH_ASSOC);
 
             $st->closeCursor();
 
