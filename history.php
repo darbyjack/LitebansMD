@@ -113,15 +113,15 @@ try {
     $total = 0;
 
     $count_st = $page->conn->prepare("SELECT 
-        (SELECT COUNT(*) FROM $t_bans WHERE $field=:uuid0) as c_bans,
-        (SELECT COUNT(*) FROM $t_mutes WHERE $field=:uuid1) as c_mutes,
-        (SELECT COUNT(*) FROM $t_warnings WHERE $field=:uuid2) as c_warnings,
-        (SELECT COUNT(*) FROM $t_kicks WHERE $field=:uuid3) as c_kicks
+        (SELECT COUNT(*) FROM $t_bans WHERE $field=:uuid0) +
+        (SELECT COUNT(*) FROM $t_mutes WHERE $field=:uuid1) +
+        (SELECT COUNT(*) FROM $t_warnings WHERE $field=:uuid2) +
+        (SELECT COUNT(*) FROM $t_kicks WHERE $field=:uuid3) as total
     ");
     for ($i = 0; $i <= 3; $i++) $count_st->bindParam(":uuid$i", $uuid, PDO::PARAM_STR);
 
     if ($count_st->execute() && ($row = $count_st->fetch()) !== null) {
-        $total = $row['c_bans'] + $row['c_mutes'] + $row['c_warnings'] + $row['c_kicks'];
+        $total = $row['total'];
     }
     $count_st->closeCursor();
 
