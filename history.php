@@ -4,23 +4,16 @@ require_once './info.php';
 
 class History {
     /**
-     * Appends COUNT(*) from $table matching $uuid to $counts,
-     * then appends all rows from $table matching $uuid to $array
+     * Appends all rows from $table matching $uuid to $array
      * @param Page $page
      * @param array $array
      * @param string $type
      * @param string $uuid
      * @param string $field
-     * @param array $counts
      */
-    static function push($page, &$array, $type, $uuid, $field, &$counts) {
+    static function push($page, &$array, $type, $uuid, $field) {
         $table = $page->settings->table[$type];
-        $count_st = $page->conn->prepare("SELECT COUNT(*) AS count FROM $table WHERE $field=:uuid");
-        $count_st->bindParam(":uuid", $uuid, PDO::PARAM_STR);
-        if ($count_st->execute() && ($row = $count_st->fetch()) !== null) {
-            $counts[$type] = $row['count'];
-        }
-        $count_st->closeCursor();
+
         $sel = $page->get_selection($table);
 
         $limit = $page->settings->limit_per_page;
@@ -105,22 +98,37 @@ if (isset($_GET['from'])) {
 
 try {
     $all = array();
-    $counts = array();
 
     $field = "uuid";
     if ($staffhistory) {
         $field = "banned_by_uuid";
     }
 
-    History::push($page, $all, 'bans', $uuid, $field, $counts);
-    History::push($page, $all, 'mutes', $uuid, $field, $counts);
-    History::push($page, $all, 'warnings', $uuid, $field, $counts);
-    History::push($page, $all, 'kicks', $uuid, $field, $counts);
+    $t = $page->settings->table;
+    $t_bans = $t['bans'];
+    $t_mutes = $t['mutes'];
+    $t_warnings = $t['warnings'];
+    $t_kicks = $t['kicks'];
 
     $total = 0;
-    foreach ($counts as $count) {
-        $total += $count;
+
+    $count_st = $page->conn->prepare("SELECT 
+        (SELECT COUNT(*) FROM $t_bans WHERE $field=:uuid0) as c_bans,
+        (SELECT COUNT(*) FROM $t_mutes WHERE $field=:uuid1) as c_mutes,
+        (SELECT COUNT(*) FROM $t_warnings WHERE $field=:uuid2) as c_warnings,
+        (SELECT COUNT(*) FROM $t_kicks WHERE $field=:uuid3) as c_kicks
+    ");
+    for ($i = 0; $i <= 3; $i++) $count_st->bindParam(":uuid$i", $uuid, PDO::PARAM_STR);
+
+    if ($count_st->execute() && ($row = $count_st->fetch()) !== null) {
+        $total = $row['c_bans'] + $row['c_mutes'] + $row['c_warnings'] + $row['c_kicks'];
     }
+    $count_st->closeCursor();
+
+    History::push($page, $all, 'bans', $uuid, $field);
+    History::push($page, $all, 'mutes', $uuid, $field);
+    History::push($page, $all, 'warnings', $uuid, $field);
+    History::push($page, $all, 'kicks', $uuid, $field);
 
     usort($all, array("History", "cmp_row_date"));
 
@@ -163,7 +171,7 @@ try {
             $label = "<span class='badge litebans-label-history litebans-label-$label_type'>$label_name</span>";
 
             $page->print_table_rows($row, array(
-                "type"      => $label,
+                "type"        => $label,
                 "player"      => $page->get_avatar($page->get_name($row['uuid']), $row['uuid']),
                 "executor"    => $page->get_avatar($page->get_banner_name($row), $row['banned_by_uuid']),
                 "reason"      => $page->clean($row['reason']),
