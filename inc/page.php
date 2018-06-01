@@ -168,17 +168,47 @@ class Page {
         }
     }
 
-    function get_selection($table) {
+    function get_selection($table, $fatquery = null, $phpIsBroken = true) {
+        $columns = array("id", "uuid", "reason", "banned_by_name", "banned_by_uuid", "time", "until", "server_origin", "server_scope", "active", "ipban");
+        $bitColumns = array("active", "ipban");
+
+        if ($table === $this->settings->table['warnings']) {
+            array_push($columns, "warned");
+            array_push($bitColumns, "warned");
+        }
+
+        if ($table !== $this->settings->table['kicks']) {
+            array_push($columns, "removed_by_uuid", "removed_by_name", "removed_by_date");
+        }
+
         // Under certain versions of PHP, there is a bug with BIT columns.
         // An empty string is returned no matter what the value is.
         // Workaround: cast to unsigned.
-        $selection = "id,uuid,reason,banned_by_name,banned_by_uuid,time,until,server_origin,server_scope,CAST(active AS UNSIGNED) AS active,CAST(ipban AS UNSIGNED) AS ipban";
-        if ($table === $this->settings->table['warnings']) {
-            $selection .= ",CAST(warned AS UNSIGNED) AS warned";
+        if ($phpIsBroken === true) {
+            foreach ($bitColumns as $column) {
+                    unset($columns[$column]);
+                    $alias = $column;
+//                    if ($fatquery !== null) {
+//                        $alias = "$fatquery.$column";
+//                    }
+                    array_push($columns, "CAST($column AS UNSIGNED) AS $alias");
+            }
         }
-        if ($table !== $this->settings->table['kicks']) {
-            $selection .= ",removed_by_uuid,removed_by_name,removed_by_date";
-        }
+
+        // is there really no better way to do this?
+//        if ($fatquery !== null) {
+//            foreach ($columns as $column) {
+//                if (!array_key_exists($column, $bitColumns)) {
+//                    unset($columns[$column]);
+//                    array_push($columns, "$column AS $fatquery.$column");
+//                }
+//            }
+//        }
+
+        $selection = implode(",", $columns);
+
+//        echo $selection;
+
         return $selection;
     }
 
