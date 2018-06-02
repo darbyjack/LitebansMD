@@ -18,19 +18,16 @@ class History {
 
         $limit = $page->settings->limit_per_page;
 
-//        $offset = History::get_offset($type);
-
-        $order = "DESC";
         if ($after > 0) {
             $order = "ASC";
+        } else {
+            $order = "DESC";
         }
         $st = $page->conn->prepare("SELECT $sel FROM $table WHERE $field=:uuid AND time > :after AND time < :before ORDER BY time $order LIMIT :limit");
         $st->bindParam(":uuid", $uuid, PDO::PARAM_STR);
         $st->bindParam(":limit", $limit, PDO::PARAM_INT);
         $st->bindParam(":before", $before, PDO::PARAM_INT);
         $st->bindParam(":after", $after, PDO::PARAM_INT);
-
-//        $st->bindParam(":offset", $offset, PDO::PARAM_INT);
 
         if ($st->execute()) {
             while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
@@ -42,12 +39,12 @@ class History {
     }
 
     /**
-     * usort() function for rows in the database
+     * usort() function for rows in the database, descending order (latest first)
      * @param PDORow $a
      * @param PDORow $b
      * @return int
      */
-    static function cmp_row_date($a, $b) {
+    static function cmp_row_date_desc($a, $b) {
         $a = $a['time'];
         $b = $b['time'];
         if ($a === $b) {
@@ -56,7 +53,13 @@ class History {
         return ($a < $b) ? 1 : -1;
     }
 
-    static function cmp_row_date_reverse($a, $b) {
+    /**
+     * usort() function for rows in the database, ascending order (oldest first)
+     * @param PDORow $a
+     * @param PDORow $b
+     * @return int
+     */
+    static function cmp_row_date_asc($a, $b) {
         $a = $a['time'];
         $b = $b['time'];
         if ($a === $b) {
@@ -64,16 +67,6 @@ class History {
         }
         return ($a > $b) ? 1 : -1;
     }
-
-//    static function get_offset($table) {
-//        $v = $table[0];
-//        if (isset($_GET[$v]) && is_string($_GET[$v])) {
-//            if (filter_var($_GET[$v], FILTER_VALIDATE_INT)) {
-//                return (int)$_GET[$v];
-//            }
-//        }
-//        return 0;
-//    }
 }
 
 $page = new Page("history");
@@ -163,38 +156,26 @@ try {
     $limit = $page->settings->limit_per_page;
 
     if ($after > 0) {
-        usort($all, array("History", "cmp_row_date_reverse"));
+        usort($all, array("History", "cmp_row_date_asc"));
         // trim all entries beyond shown, then proper sort.
-        $new_all = array();
+        // trim must be done in ascending order (oldest first), otherwise semantics change
+        $trim = array();
         $i = 0;
         foreach ($all as $row) {
             $i++;
             if ($i > $limit) break;
-            array_push($new_all, $row);
+            array_push($trim, $row);
         }
-        $all = $new_all;
-
+        $all = $trim;
     }
-    usort($all, array("History", "cmp_row_date"));
+    usort($all, array("History", "cmp_row_date_desc"));
 
     if (!empty($all)) {
         $page->table_begin();
 
-
-        /*$offset = 0;
-        if ($page->settings->show_pager) {
-            $current_page = $page->page - 1;
-            $offset = ($limit * $current_page);
-            $limit += $offset;
-        }*/
-
         $i = 0;
         foreach ($all as $row) {
             $i++;
-            /*if ($page->settings->show_pager && $i < $offset) {
-                continue;
-            }*/
-
 
             if ($i > $limit) break;
 
@@ -227,6 +208,7 @@ try {
         }
 
         $page->table_end();
+
         // print pager
         if ($page->settings->show_pager) {
             $page->name = "history";
