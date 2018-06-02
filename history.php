@@ -11,19 +11,26 @@ class History {
      * @param string $uuid
      * @param string $field
      */
-    static function push($page, &$array, $type, $uuid, $field) {
+    static function push($page, &$array, $type, $uuid, $field, $before, $after) {
         $table = $page->settings->table[$type];
 
         $sel = $page->get_selection($table);
 
         $limit = $page->settings->limit_per_page;
 
-        $offset = History::get_offset($type);
+//        $offset = History::get_offset($type);
 
-        $st = $page->conn->prepare("SELECT $sel FROM $table WHERE $field=:uuid ORDER BY time DESC LIMIT :limit OFFSET :offset");
+        $order = "DESC";
+        if ($after > 0) {
+            $order = "ASC";
+        }
+        $st = $page->conn->prepare("SELECT $sel FROM $table WHERE $field=:uuid AND time > :after AND time < :before ORDER BY time $order LIMIT :limit");
         $st->bindParam(":uuid", $uuid, PDO::PARAM_STR);
         $st->bindParam(":limit", $limit, PDO::PARAM_INT);
-        $st->bindParam(":offset", $offset, PDO::PARAM_INT);
+        $st->bindParam(":before", $before, PDO::PARAM_INT);
+        $st->bindParam(":after", $after, PDO::PARAM_INT);
+
+//        $st->bindParam(":offset", $offset, PDO::PARAM_INT);
 
         if ($st->execute()) {
             while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
@@ -49,15 +56,24 @@ class History {
         return ($a < $b) ? 1 : -1;
     }
 
-    static function get_offset($table) {
-        $v = $table[0];
-        if (isset($_GET[$v]) && is_string($_GET[$v])) {
-            if (filter_var($_GET[$v], FILTER_VALIDATE_INT)) {
-                return (int)$_GET[$v];
-            }
+    static function cmp_row_date_reverse($a, $b) {
+        $a = $a['time'];
+        $b = $b['time'];
+        if ($a === $b) {
+            return 0;
         }
-        return 0;
+        return ($a > $b) ? 1 : -1;
     }
+
+//    static function get_offset($table) {
+//        $v = $table[0];
+//        if (isset($_GET[$v]) && is_string($_GET[$v])) {
+//            if (filter_var($_GET[$v], FILTER_VALIDATE_INT)) {
+//                return (int)$_GET[$v];
+//            }
+//        }
+//        return 0;
+//    }
 }
 
 $page = new Page("history");
@@ -96,6 +112,20 @@ if (isset($_GET['from'])) {
     }
 }
 
+$after = 0;
+$before = PHP_INT_MAX;
+if (isset($_GET['before']) && is_string($_GET['before'])) {
+    if (filter_var($_GET['before'], FILTER_VALIDATE_INT)) {
+        $before = (int)$_GET['before'];
+    }
+}
+
+if (isset($_GET['after']) && is_string($_GET['after'])) {
+    if (filter_var($_GET['after'], FILTER_VALIDATE_INT)) {
+        $after = (int)$_GET['after'];
+    }
+}
+
 try {
     $all = array();
 
@@ -125,17 +155,31 @@ try {
     }
     $count_st->closeCursor();
 
-    History::push($page, $all, 'bans', $uuid, $field);
-    History::push($page, $all, 'mutes', $uuid, $field);
-    History::push($page, $all, 'warnings', $uuid, $field);
-    History::push($page, $all, 'kicks', $uuid, $field);
+    History::push($page, $all, 'bans', $uuid, $field, $before, $after);
+    History::push($page, $all, 'mutes', $uuid, $field, $before, $after);
+    History::push($page, $all, 'warnings', $uuid, $field, $before, $after);
+    History::push($page, $all, 'kicks', $uuid, $field, $before, $after);
 
+    $limit = $page->settings->limit_per_page;
+
+    if ($after > 0) {
+        usort($all, array("History", "cmp_row_date_reverse"));
+        // trim all entries beyond shown, then proper sort.
+        $new_all = array();
+        $i = 0;
+        foreach ($all as $row) {
+            $i++;
+            if ($i > $limit) break;
+            array_push($new_all, $row);
+        }
+        $all = $new_all;
+
+    }
     usort($all, array("History", "cmp_row_date"));
 
     if (!empty($all)) {
         $page->table_begin();
 
-        $limit = $page->settings->limit_per_page;
 
         /*$offset = 0;
         if ($page->settings->show_pager) {
@@ -144,25 +188,25 @@ try {
             $limit += $offset;
         }*/
 
-        $totalb = 0;
-        $totalm = 0;
-        $totalw = 0;
-        $totalk = 0;
-
         $i = 0;
         foreach ($all as $row) {
             $i++;
             /*if ($page->settings->show_pager && $i < $offset) {
                 continue;
             }*/
+
+
             if ($i > $limit) break;
 
-            $type = $row['__table__'];
+            $dateStart = $row['time'];
+            if ($dateStart < $before) {
+                $before = $dateStart;
+            }
+            if ($dateStart > $after) {
+                $after = $dateStart;
+            }
 
-            if ($type == 'bans') $totalb++;
-            elseif ($type == 'mutes') $totalm++;
-            elseif ($type == 'warnings') $totalw++;
-            elseif ($type == 'kicks') $totalk++;
+            $type = $row['__table__'];
 
             $page->set_info($page->type_info($type));
 
@@ -196,12 +240,11 @@ try {
 
             $prevargs = $args;
 
-            $offb = History::get_offset("b") + $totalb;
-            $offm = History::get_offset("m") + $totalm;
-            $offw = History::get_offset("w") + $totalw;
-            $offk = History::get_offset("k") + $totalk;
+            $args .= "&before=$before";
 
-            $args .= "&b=$offb&m=$offm&w=$offw&k=$offk";
+            if ($page->page > 2) {
+                $prevargs .= "&after=$after";
+            }
 
             $page->print_pager($total, $args, $prevargs);
         }
