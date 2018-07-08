@@ -14,6 +14,18 @@
     text-align: center;
 }
 
+/* navbar */
+.navbar {
+    font-weight: bold;
+}
+.navbar-brand {
+    font-weight: normal;
+}
+
+.navbar-active {
+    font-weight: bolder;
+}
+
 /* tables */
 th {
     text-align: center;
@@ -83,12 +95,18 @@ tr.hover {
 }
 
 .litebans-index-main {
+    font-weight: bold;
 }
 
 .litebans-index-sub {
+    font-weight: lighter;
 }
 
 /* info.php */
+.badge, .badge-pill {
+    font-weight: 100;
+}
+
 .litebans-label-container {
     width: 0;
     display: inline-flex;
@@ -97,6 +115,7 @@ tr.hover {
 .litebans-label-info {
     margin-left: 15px;
     font-size: 17px;
+    font-weight: 800;
 }
 
 .litebans-label-inactive {
@@ -127,6 +146,7 @@ tr.hover {
 /* history.php */
 .litebans-label-history {
     font-size: 16px;
+    font-weight: 800;
 }
 
 .litebans-label-ban {

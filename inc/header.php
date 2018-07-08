@@ -38,7 +38,7 @@ function navbar($links) {
         $li = "li";
         $class = "nav-item";
         if ((substr($_SERVER['SCRIPT_NAME'], -strlen($page))) === $page) {
-            $class .= " active";
+            $class .= " active navbar-active";
         }
         $li .= " class=\"$class\"";
 
