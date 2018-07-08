@@ -26,6 +26,10 @@
     font-weight: bolder;
 }
 
+.my-lg-0 {
+    font-weight: lighter;
+}
+
 /* tables */
 th {
     text-align: center;
