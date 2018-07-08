@@ -29,6 +29,14 @@ final class Settings {
         // $this->name_link = 'https://example.com';
         $this->name_link = 'index.php';
 
+        // Here you can customize colors for the Bootstrap 4 theme that you are using.
+        // Bootstrap 4 themes have four sets of colors: primary, secondary, light and dark.
+        // Navbar classes: navbar-light, navbar-dark, bg-primary, bg-secondary, bg-light, bg-dark
+        // Badge (label) classes: badge, badge-pill, badge-primary, badge-secondary, badge-light, badge-dark
+        $this->navbar_classes = 'navbar-dark bg-primary';
+        $this->badge_classes = 'badge-pill badge-secondary';
+        $this->info_badge_classes = 'badge';
+
         // Show server scope column?
         $this->show_server_scope = true;
 

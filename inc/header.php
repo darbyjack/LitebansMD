@@ -43,7 +43,7 @@ function navbar($links) {
         $li .= " class=\"$class\"";
 
         if ($this->page->settings->header_show_totals && isset($this->count[$page])) {
-            $title .= " <span class=\"badge-pill badge-secondary\">";
+            $title .= ' <span class="' . $this->page->settings->badge_classes . '">';
             $title .= $this->count[$page];
             $title .= "</span>";
         }
@@ -79,7 +79,7 @@ $settings = $this->page->settings;
 
 
 <header role="banner">
-    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+    <div class="navbar navbar-expand-lg fixed-top <?php echo $settings->navbar_classes; ?>">
         <div class="container">
             <a class="navbar-brand" href="<?php echo $settings->name_link; ?>">
                 <?php echo $settings->name; ?>

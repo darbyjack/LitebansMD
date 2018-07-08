@@ -169,6 +169,7 @@ try {
         $all = $trim;
     }
     usort($all, array("History", "cmp_row_date_desc"));
+    $bc = $page->settings->info_badge_classes;
 
     if (!empty($all)) {
         $page->table_begin();
@@ -193,7 +194,7 @@ try {
 
             $label_type = $page->type;
             $label_name = Info::create($row, $page, $label_type)->name(); //ucfirst($label_type);
-            $label = "<span class='badge litebans-label-history litebans-label-$label_type'>$label_name</span>";
+            $label = "<span class='$bc litebans-label-history litebans-label-$label_type'>$label_name</span>";
 
             $page->print_table_rows($row, array(
                 "type"        => $label,
