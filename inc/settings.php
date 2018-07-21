@@ -234,7 +234,7 @@ final class Settings {
         if ($settings->error_reporting === false) {
             die("Database error");
         }
-        die('Database error: ' . $message);
+        die("Database error: $message");
     }
 
 
@@ -256,7 +256,7 @@ final class Settings {
             ob_start();
             var_dump($test);
             $testdump = ob_get_clean();
-            echo("Error: date_format test failed. gmstrftime(\"" . $this->date_format . "\",0) returned " . $testdump);
+            echo("Error: date_format test failed. gmstrftime(\"" . $this->date_format . "\",0) returned $testdump");
             $fail = true;
         }
 
@@ -266,7 +266,7 @@ final class Settings {
             var_dump($test);
             $testdump = ob_get_clean();
             echo("Assertion failed: gmstrftime(\"%Y-%m-%d %H:%M\",0) != \"1970-01-01 00:00\"<br>");
-            echo("Actual result: " . $testdump);
+            echo("Actual result: $testdump");
             $fail = true;
         }
 

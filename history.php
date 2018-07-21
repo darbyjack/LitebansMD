@@ -204,7 +204,6 @@ try {
                 "date"        => $page->millis_to_date($row['time']),
                 "expires"     => $page->expiry($row),
                 "server.name" => $page->server($row),
-                //'i' => $i . "/" . $limit . "/" . $total,
             ));
         }
 

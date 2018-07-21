@@ -168,7 +168,7 @@ class Page {
         }
     }
 
-    function get_selection($table, $fatquery = null, $phpIsBroken = true) {
+    function get_selection($table, $phpIsBroken = true) {
         $columns = array("id", "uuid", "reason", "banned_by_name", "banned_by_uuid", "time", "until", "server_origin", "server_scope", "active", "ipban");
         $bitColumns = array("active", "ipban");
 
@@ -186,29 +186,12 @@ class Page {
         // Workaround: cast to unsigned.
         if ($phpIsBroken === true) {
             foreach ($bitColumns as $column) {
-                    unset($columns[$column]);
-                    $alias = $column;
-//                    if ($fatquery !== null) {
-//                        $alias = "$fatquery.$column";
-//                    }
-                    array_push($columns, "CAST($column AS UNSIGNED) AS $alias");
+                unset($columns[$column]);
+                $alias = $column;
+                array_push($columns, "CAST($column AS UNSIGNED) AS $alias");
             }
         }
-
-        // is there really no better way to do this?
-//        if ($fatquery !== null) {
-//            foreach ($columns as $column) {
-//                if (!array_key_exists($column, $bitColumns)) {
-//                    unset($columns[$column]);
-//                    array_push($columns, "$column AS $fatquery.$column");
-//                }
-//            }
-//        }
-
         $selection = implode(",", $columns);
-
-//        echo $selection;
-
         return $selection;
     }
 
@@ -408,24 +391,17 @@ class Page {
 
         $time = gettimeofday();
         $millis = $time["sec"] * 1000;
-//        $dtz = new DateTimeZone(date_default_timezone_get());
-//        $dt = new DateTime("now", $dtz);
-//        $millis = ($dt->getTimestamp() + $dt->getOffset()) * 1000;
 
-        if ($millis > $until) {
-            return true;
-        }
-        return false;
+        return ($millis > $until);
     }
 
     function print_title() {
         $title = $this->title;
         $name = $this->settings->name;
-        if ($title === null) {
-            echo "<title>$name</title>";
-        } else {
-            echo "<title>$title - $name</title>";
+        if ($title !== null) {
+            $name = "$title - $name";
         }
+        echo "<title>$name</title>";
     }
 
     function print_table_rows($row, $array, $print_headers = true) {
@@ -440,7 +416,7 @@ class Page {
                 if ($header === "executor" && $this->name !== "history") {
                     $header = $this->punished_by[$type];
                 } else {
-                    $header = $this->t("table." . $header);
+                    $header = $this->t("table.$header");
                 }
                 array_push($headers_translated, $header);
             }
@@ -548,7 +524,7 @@ class Page {
     }
 
     function autoversion($file) {
-        return $file . "?" . filemtime($file);
+        return "$file?" . filemtime($file);
     }
 
     function table_begin() {
@@ -578,7 +554,7 @@ class Page {
      */
     public function where_append($where) {
         if ($where !== "") {
-            return $where . " AND ";
+            return "$where AND ";
         } else {
             return "WHERE ";
         }
