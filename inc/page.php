@@ -1,4 +1,5 @@
 <?php
+require_once './inc/init.php';
 
 class Page {
     public function __construct($name, $header = true) {

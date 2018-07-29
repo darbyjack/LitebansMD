@@ -28,7 +28,7 @@ class Check {
             if (!isset($uuid)) {
                 if (filter_var($name, FILTER_VALIDATE_FLOAT)) {
                     echo "<br>";
-                    $page->settings->redirect("info.php?id=$name&type=$type", false);
+                    redirect("info.php?id=$name&type=$type", false);
                     return;
                 }
                 $name = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
@@ -42,7 +42,7 @@ class Check {
             }
 
             echo "<br>";
-            $page->settings->redirect($href, false);
+            redirect($href, false);
             /*
             $table = $page->settings->table['bans'];
 

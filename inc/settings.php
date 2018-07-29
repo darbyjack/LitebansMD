@@ -165,7 +165,7 @@ final class Settings {
         $this->driver = $driver;
         if ($connect) {
             if ($username === "" && $password === "") {
-                $this->redirect("error/unconfigured.php");
+                redirect("error/unconfigured.php");
             }
             $host = $this->host;
             $port = $this->port;
@@ -212,9 +212,9 @@ final class Settings {
         if ($settings->error_pages) {
             if (strstr($message, "Access denied for user")) {
                 if ($settings->error_reporting) {
-                    $settings->redirect("error/access-denied.php?error=" . base64_encode($message));
+                    redirect("error/access-denied.php?error=" . base64_encode($message));
                 } else {
-                    $settings->redirect("error/access-denied.php");
+                    redirect("error/access-denied.php");
                 }
             }
             if (strstr($message, "Base table or view not found:")) {
@@ -223,12 +223,12 @@ final class Settings {
                     $st->fetch();
                     $st->closeCursor();
                 } catch (PDOException $e) {
-                    $settings->redirect("error/tables-not-found.php");
+                    redirect("error/tables-not-found.php");
                 }
-                $settings->redirect("error/outdated-plugin.php");
+                redirect("error/outdated-plugin.php");
             }
             if (strstr($message, "Unknown column")) {
-                $settings->redirect("error/outdated-plugin.php");
+                redirect("error/outdated-plugin.php");
             }
         }
         if ($settings->error_reporting === false) {
@@ -238,13 +238,6 @@ final class Settings {
     }
 
 
-    function redirect($url, $showtext = true) {
-        if ($showtext === true) {
-            echo "<a href=\"$url\">Redirecting...</a>";
-        }
-        echo "<script data-cfasync=\"false\" type=\"text/javascript\">document.location=\"$url\";</script>";
-        die;
-    }
 
     private function test_strftime() {
         // If you modify this function, you may get an "Assertion failed" error.
