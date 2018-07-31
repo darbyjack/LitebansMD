@@ -105,8 +105,11 @@ if (isset($_GET['from'])) {
     }
 }
 
+// PHP's PHP_INT_MAX is platform-dependent... As if int64 isn't a type under 32-bit operating systems
+//$before = PHP_INT_MAX;
+$before = "9223372036854775807";
 $after = 0;
-$before = PHP_INT_MAX;
+
 if (isset($_GET['before']) && is_string($_GET['before'])) {
     if (filter_var($_GET['before'], FILTER_VALIDATE_INT)) {
         $before = (int)$_GET['before'];
