@@ -111,14 +111,14 @@ $before = "9223372036854775807";
 $after = 0;
 
 if (isset($_GET['before']) && is_string($_GET['before'])) {
-    if (filter_var($_GET['before'], FILTER_VALIDATE_INT)) {
-        $before = (int)$_GET['before'];
+    if (filter_var($_GET['before'], FILTER_VALIDATE_FLOAT)) {
+        $before = $_GET['before'];
     }
 }
 
 if (isset($_GET['after']) && is_string($_GET['after'])) {
-    if (filter_var($_GET['after'], FILTER_VALIDATE_INT)) {
-        $after = (int)$_GET['after'];
+    if (filter_var($_GET['after'], FILTER_VALIDATE_FLOAT)) {
+        $after = $_GET['after'];
     }
 }
 
