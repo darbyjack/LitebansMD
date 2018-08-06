@@ -7,7 +7,7 @@ class Lang {
         $array["index.welcome.main"] = "Vítejte na {server} Ban Listu.";
         $array["index.welcome.sub"] = "Naleznete zde vypsány všechny své tresty.";
 
-        $array["title.index"] = 'Úvod';
+        $array["title.index"] = 'Domů';
         $array["title.bans"] = 'Bany';
         $array["title.mutes"] = 'Umlčení';
         $array["title.warnings"] = 'Varování';
@@ -63,7 +63,7 @@ class Lang {
         $array["action.check"] = "Vyhledat";
         $array["action.return"] = "Zpět na {origin}";
 
-        $array["error.missing-args"] = "Nedostatečné argumenty argumenty.";
+        $array["error.missing-args"] = "Nedostatečné argumenty.";
         $array["error.name.unseen"] = "{name} se ještě nikdy nepřipojil(a).";
         $array["error.name.invalid"] = "Chybné jméno.";
         $array["history.error.uuid.no-result"] = "Žádné tresty nebyly nalezeny.";
