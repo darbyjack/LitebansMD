@@ -4,42 +4,69 @@ class Lang {
     public function __construct() {
         $array = array();
         $this->array = &$array;
-        $array["index.welcome.main"] = 'Vítej na {server}.';
-        $array["index.welcome.sub"] = 'Zde nalezneš vypsány všechny své tresty.';
+        $array["index.welcome.main"] = "Vítejte na {server} Ban Listu.";
+        $array["index.welcome.sub"] = "Naleznete zde vypsány všechny své tresty.";
 
-        $array["title.index"] = 'Úvod';
+        $array["title.index"] = 'Domů';
         $array["title.bans"] = 'Bany';
         $array["title.mutes"] = 'Umlčení';
         $array["title.warnings"] = 'Varování';
         $array["title.kicks"] = 'Vyhození';
-        $array["page.permanent.ban"] = 'Trvalý ban';
-        $array["page.permanent.mute"] = 'Umlčen navždy';
-        $array["page.permanent.warning"] = 'Trvalé varování';
-        $array["page.expired.ban"] = '(Odbanován)';
-        $array["page.expired.ban-by"] = '(Odbanován kým {name})';
-        $array["page.expired.mute"] = '(Odmlčen)';
-        $array["page.expired.mute-by"] = '(Odmlčen kým {name})';
-        $array["page.expired.warning"] = '(Vypršel)';
+        $array["title.player-history"] = "Nedávné tresty pro {name}";
+        $array["title.staff-history"] = "Nedávné tresty od {name}";
 
-        $array["check.username"] = "Hráč";
-        $array["action.check"] = "Ověřit";
-        $array["table.pager.number"] = "Strana";
-        $array["error.name.invalid"] = "Neplatné zadání";
-        $array["error.name.unseen"] = "u nás ještě nebyl";
-        $array["history.error.uuid.required"] = "Chybějící argument (uuid)";
 
-        $array["title.staff-history"] = "Nedávné tresty od ";
-        $array["title.player-history"] = "Nedávne tresty pro ";
-        $array["history.type"] = "Typ";
+        $array["generic.ban"] = "Ban";
+        $array["generic.mute"] = "Umlčení";
+        $array["generic.warn"] = "Varování";
+        $array["generic.kick"] = "Vyhození";
 
-        $array["history.error.uuid.no-result"] = "Nenalezeny žádné tresty";
-        $array["action.return"] = "Vrátit se na";
+        $array["generic.banned"] = "Zabanován";
+        $array["generic.muted"] = "Umlčen";
+        $array["generic.warned"] = "Varován";
+        $array["generic.kicked"] = "Vyhození";
 
-        $array["info.error.type-id.required"] = "Neplatné argumenty (typ, id)";
-        $array["info.error.type.invalid"] = "Vyžádána neznámá stránka";
-        $array["info.error.id.invalid"] = "Neplatné ID";
-        $array["info.error.id.no-result"] = "Chyba: ";
+        $array["generic.banned.by"] = $array["generic.banned"] . " Od";
+        $array["generic.muted.by"] = $array["generic.muted"] . " Od";
+        $array["generic.warned.by"] = $array["generic.warned"] . " Od";
+        $array["generic.kicked.by"] = $array["generic.kicked"] . " Od";
 
-        $array["table.received-warning"] = "Varování doručeno";
+        $array["generic.ipban"] = "IP " . $array["generic.ban"];
+        $array["generic.ipmute"] = "IP " . $array["generic.mute"];
+        $array["generic.type"] = "Typ";
+        $array["generic.active"] = "Aktivní";
+        $array["generic.inactive"] = "Neaktivní";
+        $array["generic.expired"] = "Platnost trestu vypršela";
+        $array["generic.permanent"] = "Pernamentní trest";
+        $array["generic.player-name"] = "Hráč(ka)";
+
+        $array["page.expired.ban"] = '(Odbanován(a))';
+        $array["page.expired.ban-by"] = 'Odbanován(a) od {name})';
+        $array["page.expired.mute"] = '(Odmlčen(a))';
+        $array["page.expired.mute-by"] = '(Odmlčen(a) od {name})';
+        $array["page.expired.warning"] = '(' . $array["generic.expired"] . ')';
+
+        $array["table.player"] = $array["generic.player-name"];
+        $array["table.type"] = $array["generic.type"];
+        $array["table.executor"] = "Moderátor";
+        $array["table.reason"] = "Důvod";
+        $array["table.date"] = "Datum";
+        $array["table.expires"] = "Vypršelo";
+        $array["table.received-warning"] = "Poslední varování";
+
+        $array["table.server.name"] = "Server";
+        $array["table.server.scope"] = "Platné pro servery";
+        $array["table.server.origin"] = "Původní server";
+        $array["table.server.global"] = "*";
+        $array["table.pager.number"] = "Stránka";
+
+        $array["action.check"] = "Vyhledat";
+        $array["action.return"] = "Zpět na {origin}";
+
+        $array["error.missing-args"] = "Nedostatečné argumenty argumenty.";
+        $array["error.name.unseen"] = "{name} se ještě nikdy nepřipojil(a).";
+        $array["error.name.invalid"] = "Chybné jméno.";
+        $array["history.error.uuid.no-result"] = "Žádné tresty nebyly nalezeny.";
+        $array["info.error.id.no-result"] = "Chyba: {type} nebyl nalezen v databázi.";
     }
 }
