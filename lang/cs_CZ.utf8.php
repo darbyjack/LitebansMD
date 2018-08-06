@@ -7,7 +7,7 @@ class Lang {
         $array["index.welcome.main"] = "Vítejte na {server} Ban Listu.";
         $array["index.welcome.sub"] = "Naleznete zde vypsány všechny své tresty.";
 
-        $array["title.index"] = 'Domů';
+        $array["title.index"] = 'Úvod';
         $array["title.bans"] = 'Bany';
         $array["title.mutes"] = 'Umlčení';
         $array["title.warnings"] = 'Varování';
@@ -26,10 +26,10 @@ class Lang {
         $array["generic.warned"] = "Varován";
         $array["generic.kicked"] = "Vyhození";
 
-        $array["generic.banned.by"] = $array["generic.banned"] . " Od";
-        $array["generic.muted.by"] = $array["generic.muted"] . " Od";
-        $array["generic.warned.by"] = $array["generic.warned"] . " Od";
-        $array["generic.kicked.by"] = $array["generic.kicked"] . " Od";
+        $array["generic.banned.by"] = $array["generic.banned"] . " od";
+        $array["generic.muted.by"] = $array["generic.muted"] . " od";
+        $array["generic.warned.by"] = $array["generic.warned"] . " od";
+        $array["generic.kicked.by"] = $array["generic.kicked"] . " od";
 
         $array["generic.ipban"] = "IP " . $array["generic.ban"];
         $array["generic.ipmute"] = "IP " . $array["generic.mute"];
