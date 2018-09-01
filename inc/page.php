@@ -43,8 +43,8 @@ class Page {
         $this->set_info($info);
 
         $this->permanent = array(
-            'ban'  => $this->t("generic.permanent") . " " . $this->t("generic.ban"),
-            'mute' => $this->t("generic.permanent") . " " . $this->t("generic.mute"),
+            'ban'  => $this->t("generic.permanent.ban"),
+            'mute' => $this->t("generic.permanent.mute"),
             'warn' => $this->t("generic.permanent"),
             'kick' => null,
         );

@@ -33,11 +33,15 @@ class DefaultLang {
 
         $array["generic.ipban"] = "IP " . $array["generic.ban"];
         $array["generic.ipmute"] = "IP " . $array["generic.mute"];
+
+        $array["generic.permanent"] = "Permanent";
+        $array["generic.permanent.ban"] = $array['generic.permanent'] . ' ' . $array["generic.ban"];
+        $array["generic.permanent.mute"] = $array['generic.permanent'] . ' ' . $array["generic.mute"];
+
         $array["generic.type"] = "Type";
         $array["generic.active"] = "Active";
         $array["generic.inactive"] = "Inactive";
         $array["generic.expired"] = "Expired";
-        $array["generic.permanent"] = "Permanent";
         $array["generic.player-name"] = "Player";
 
         $array["page.expired.ban"] = '(Unbanned)';
