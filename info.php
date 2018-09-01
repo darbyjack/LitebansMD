@@ -180,7 +180,7 @@ if ($st->execute(array($id))) {
             }
         }
     }
-    $page->print_header(true, $header . "<div class=\"litebans-label-container\">$badges</div>");
+    $page->print_header(true, $header . "<div class=\"noalign-w litebans-label-container\">$badges</div>");
 
     $map = $info->basic_info($row, $player_name);
 

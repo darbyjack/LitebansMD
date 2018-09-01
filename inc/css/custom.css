@@ -18,6 +18,7 @@
 .navbar {
     font-weight: bold;
 }
+
 .navbar-brand {
     font-weight: normal;
 }
@@ -116,7 +117,6 @@ tr.hover {
 }
 
 .litebans-label-container {
-    width: 0;
     display: inline-flex;
 }
 
@@ -182,4 +182,13 @@ tr.hover {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+/* prevent alignment */
+.noalign-w {
+    width: 0;
+}
+
+.noalign-h {
+    height: 0;
 }
