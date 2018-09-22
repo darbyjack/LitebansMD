@@ -4,15 +4,21 @@ require_once './inc/page.php';
 class Check {
     public function run($name, $from) {
         $page = new Page("check", false);
+
+        $column = "name";
+
         // validate user input
-        if (strlen($name) > 16 || !preg_match("/^[0-9a-zA-Z_]{1,16}$/", $name)) {
+        if ($page->is_uuid($name) && preg_match("/^[0-9a-zA-Z-]{32,36}$/", $name)) {
+            $column = "uuid";
+            $name = $page->uuid_dashify($name);
+        } else if (strlen($name) > 16 || !preg_match("/^[0-9a-zA-Z_]{1,16}$/", $name)) {
             $this->println($page->t("error.name.invalid"));
             return;
         }
         $history = $page->settings->table['history'];
 
         try {
-            $stmt = $page->conn->prepare("SELECT name,uuid FROM $history WHERE name=? ORDER BY date LIMIT 1");
+            $stmt = $page->conn->prepare("SELECT name,uuid FROM $history WHERE $column=? ORDER BY date LIMIT 1");
             if ($stmt->execute(array($name))) {
                 if ($row = $stmt->fetch()) {
                     $name = $row['name'];

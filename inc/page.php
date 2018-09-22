@@ -396,6 +396,41 @@ class Page {
         return ($millis > $until);
     }
 
+    /**
+     * Returns true if a string should be treated as a UUID.
+     * @param $str
+     * @return bool
+     */
+    function is_uuid($str) {
+        $len = strlen($str);
+        return $len == 32 || $len == 36;
+    }
+
+    function uuid_dashify($str) {
+        $len = strlen($str);
+        if ($len !== 32) return $str;
+        $newstr = "";
+        $total = 0; // current character (all chars)
+        $cur = 0; // current position in chunk, resets to 0 when it reaches limit
+        $chunk = 0; // current amount of "-" characters, 5 chunks are in a UUID (1-2-3-4-5)
+        $limit = 8; // maximum amount of characters in the current chunk (8-4-4-4-12)
+        for ($i = 0; $i < $len; $i++) {
+            $chr = $str[$i];
+            $total++;
+            $newstr .= $chr;
+            if (++$cur >= $limit) {
+                $cur = 0;
+                if ($total < 32) {
+                    $newstr .= '-';
+                }
+                $chunk++;
+                if ($chunk == 1) $limit = 4;
+                if ($chunk >= 4) $limit = 12;
+            }
+        }
+        return $newstr;
+    }
+
     function print_title() {
         $title = $this->title;
         $name = $this->settings->name;
