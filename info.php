@@ -39,6 +39,7 @@ abstract class Info {
     }
 
     function history_link($player_name, $uuid, $args = "") {
+        $uuid = $this->page->uuid_undashify($uuid);
         return "<a href=\"history.php?uuid=$uuid$args\">$player_name</a>";
     }
 

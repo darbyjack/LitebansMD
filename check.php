@@ -42,6 +42,7 @@ class Check {
                 $this->println(str_replace("{name}", $name, $page->t("error.name.unseen")));
                 return;
             }
+            $uuid = $page->uuid_undashify($uuid);
             $href = "history.php?uuid=$uuid";
 
             if ($type !== null) {

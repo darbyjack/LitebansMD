@@ -214,7 +214,7 @@ class Page {
             }
         }
 
-        $uuid = str_replace("-", "", $uuid);
+        $uuid = $this->uuid_undashify($uuid);
         $src = str_replace('{name}', $name, str_replace('{uuid}', $uuid, $avatar_source));
         if (in_array($name, $this->settings->console_aliases) || $name === $this->settings->console_name) {
             $src = $this->settings->console_image;
@@ -428,6 +428,11 @@ class Page {
             }
         }
         return $newstr;
+    }
+
+    function uuid_undashify($str) {
+        if (strlen($str) !== 36) return $str;
+        return str_replace('-', '', $str);
     }
 
     function print_title() {

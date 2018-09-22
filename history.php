@@ -75,7 +75,7 @@ isset($_GET['uuid']) && is_string($_GET['uuid']) or die($page->t("error.missing-
 
 $staffhistory = (isset($_GET['staffhistory']) && $_GET['staffhistory'] === "1");
 
-$uuid = $_GET['uuid'];
+$uuid = $page->uuid_dashify($_GET['uuid']);
 $name = $page->get_name($uuid);
 
 $name !== null or die(str_replace("{name}", $name, $page->t("error.name.unseen")));
