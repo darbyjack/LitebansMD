@@ -411,17 +411,15 @@ class Page {
         $len = strlen($str);
         if ($len !== 32) return $str;
         $newstr = "";
-        $total = 0; // current character (all chars)
         $cur = 0; // current position in chunk, resets to 0 when it reaches limit
         $chunk = 0; // current amount of "-" characters, 5 chunks are in a UUID (1-2-3-4-5)
         $limit = 8; // maximum amount of characters in the current chunk (8-4-4-4-12)
         for ($i = 0; $i < $len; $i++) {
             $chr = $str[$i];
-            $total++;
             $newstr .= $chr;
             if (++$cur >= $limit) {
                 $cur = 0;
-                if ($total < 32) {
+                if ($i < 32) {
                     $newstr .= '-';
                 }
                 $chunk++;
