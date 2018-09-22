@@ -419,7 +419,7 @@ class Page {
             $newstr .= $chr;
             if (++$cur >= $limit) {
                 $cur = 0;
-                if ($i < 32) {
+                if ($i < 31) {
                     $newstr .= '-';
                 }
                 $chunk++;
