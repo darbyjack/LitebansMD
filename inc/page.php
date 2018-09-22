@@ -270,8 +270,9 @@ class Page {
         $result = null;
         $history = $this->settings->table['history'];
 
-        $stmt = $this->conn->prepare("SELECT name FROM $history WHERE uuid=? ORDER BY date DESC LIMIT 1");
-        if ($stmt->execute(array($uuid)) && $row = $stmt->fetch()) {
+        $stmt = $this->conn->prepare("SELECT name FROM $history WHERE uuid=:uuid ORDER BY date DESC LIMIT 1");
+        $stmt->bindParam(":uuid", $uuid, PDO::PARAM_STR);
+        if ($stmt->execute() && $row = $stmt->fetch()) {
             $result = $row['name'];
         }
         $stmt->closeCursor();

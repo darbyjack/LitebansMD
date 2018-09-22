@@ -129,11 +129,12 @@ $id = (int)$id;
 $type = $page->type;
 $table = $page->table;
 $sel = $page->get_selection($table);
-$query = "SELECT $sel FROM $table WHERE id=? LIMIT 1";
+$query = "SELECT $sel FROM $table WHERE id=:id LIMIT 1";
 
 $st = $page->conn->prepare($query);
+$st->bindParam(":id", $id, PDO::PARAM_INT);
 
-if ($st->execute(array($id))) {
+if ($st->execute()) {
     ($row = $st->fetch()) or die(str_replace("{type}", $type, $page->t("info.error.id.no-result")));
     $st->closeCursor();
 
