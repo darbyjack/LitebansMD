@@ -231,26 +231,24 @@ final class Settings {
                 redirect("error/outdated-plugin.php");
             }
         }
-        if ($settings->error_reporting === false) {
+        if ($settings->error_reporting) {
+            die("Database error: $message");
+        } else {
             die("Database error");
         }
-        die("Database error: $message");
     }
-
 
 
     private function test_strftime() {
         // If you modify this function, you may get an "Assertion failed" error.
         date_default_timezone_set("UTC"); // temporarily set UTC timezone for testing purposes
 
-        $fail = false;
         $test = gmstrftime($this->date_format, 0);
         if ($test == false) {
             ob_start();
             var_dump($test);
             $testdump = ob_get_clean();
-            echo("Error: date_format test failed. gmstrftime(\"" . $this->date_format . "\",0) returned $testdump");
-            $fail = true;
+            die("Error: date_format test failed. gmstrftime(\"" . $this->date_format . "\",0) returned $testdump");
         }
 
         $test = gmstrftime("%Y-%m-%d %H:%M", 0);
@@ -258,13 +256,7 @@ final class Settings {
             ob_start();
             var_dump($test);
             $testdump = ob_get_clean();
-            echo("Assertion failed: gmstrftime(\"%Y-%m-%d %H:%M\",0) != \"1970-01-01 00:00\"<br>");
-            echo("Actual result: $testdump");
-            $fail = true;
-        }
-
-        if ($fail === true) {
-            die;
+            die("Assertion failed: gmstrftime(\"%Y-%m-%d %H:%M\",0) != \"1970-01-01 00:00\"<br>Actual result: $testdump");
         }
     }
 }
