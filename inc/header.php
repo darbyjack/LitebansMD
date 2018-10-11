@@ -14,10 +14,10 @@ function __construct($page) {
         $t_kicks = $t['kicks'];
         try {
             $st = $page->conn->query("SELECT
-            (SELECT id FROM $t_bans ORDER BY id DESC LIMIT 1),
-            (SELECT id FROM $t_mutes ORDER BY id DESC LIMIT 1),
-            (SELECT id FROM $t_warnings ORDER BY id DESC LIMIT 1),
-            (SELECT id FROM $t_kicks ORDER BY id DESC LIMIT 1)");
+            (SELECT COUNT(*) FROM $t_bans),
+            (SELECT COUNT(*) FROM $t_mutes),
+            (SELECT COUNT(*) FROM $t_warnings),
+            (SELECT COUNT(*) FROM $t_kicks)");
             ($row = $st->fetch(PDO::FETCH_NUM)) or die('Failed to fetch row counts.');
             $st->closeCursor();
             $this->count = array(
