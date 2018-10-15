@@ -55,13 +55,13 @@ class BanInfo extends Info {
     function basic_info($row, $player_name) {
         $page = $this->page;
         return array(
-            $page->t("table.player")        => $this->punished_avatar($player_name, $row),
-            $page->t("table.executor")      => $this->moderator_avatar($row),
-            $page->t("table.reason")        => $page->clean($row['reason']),
-            $page->t("table.date")          => $page->millis_to_date($row['time']),
-            $page->t("table.expires")       => $page->expiry($row),
-            $page->t("table.server.scope")  => $page->server($row),
-            $page->t("table.server.origin") => $page->server($row, "server_origin"),
+            "table.player"        => $this->punished_avatar($player_name, $row),
+            "table.executor"      => $this->moderator_avatar($row),
+            "table.reason"        => $page->clean($row['reason']),
+            "table.date"          => $page->millis_to_date($row['time']),
+            "table.expires"       => $page->expiry($row),
+            "table.server.scope"  => $page->server($row),
+            "table.server.origin" => $page->server($row, "server_origin"),
         );
     }
 }
@@ -70,13 +70,13 @@ class MuteInfo extends Info {
     function basic_info($row, $player_name) {
         $page = $this->page;
         return array(
-            $page->t("table.player")        => $this->punished_avatar($player_name, $row),
-            $page->t("table.executor")      => $this->moderator_avatar($row),
-            $page->t("table.reason")        => $page->clean($row['reason']),
-            $page->t("table.date")          => $page->millis_to_date($row['time']),
-            $page->t("table.expires")       => $page->expiry($row),
-            $page->t("table.server.scope")  => $page->server($row),
-            $page->t("table.server.origin") => $page->server($row, "server_origin"),
+            "table.player"        => $this->punished_avatar($player_name, $row),
+            "table.executor"      => $this->moderator_avatar($row),
+            "table.reason"        => $page->clean($row['reason']),
+            "table.date"          => $page->millis_to_date($row['time']),
+            "table.expires"       => $page->expiry($row),
+            "table.server.scope"  => $page->server($row),
+            "table.server.origin" => $page->server($row, "server_origin"),
         );
     }
 }
@@ -85,13 +85,13 @@ class WarnInfo extends Info {
     function basic_info($row, $player_name) {
         $page = $this->page;
         return array(
-            $page->t("table.player")        => $this->punished_avatar($player_name, $row),
-            $page->t("table.executor")      => $this->moderator_avatar($row),
-            $page->t("table.reason")        => $page->clean($row['reason']),
-            $page->t("table.date")          => $page->millis_to_date($row['time']),
-            $page->t("table.expires")       => $page->expiry($row),
-            $page->t("table.server.scope")  => $page->server($row),
-            $page->t("table.server.origin") => $page->server($row, "server_origin"),
+            "table.player"        => $this->punished_avatar($player_name, $row),
+            "table.executor"      => $this->moderator_avatar($row),
+            "table.reason"        => $page->clean($row['reason']),
+            "table.date"          => $page->millis_to_date($row['time']),
+            "table.expires"       => $page->expiry($row),
+            "table.server.scope"  => $page->server($row),
+            "table.server.origin" => $page->server($row, "server_origin"),
         );
     }
 }
@@ -100,12 +100,12 @@ class KickInfo extends Info {
     function basic_info($row, $player_name) {
         $page = $this->page;
         return array(
-            $page->t("table.player")        => $this->punished_avatar($player_name, $row),
-            $page->t("table.executor")      => $this->moderator_avatar($row),
-            $page->t("table.reason")        => $page->clean($row['reason']),
-            $page->t("table.date")          => $page->millis_to_date($row['time']),
-            $page->t("table.server.scope")  => $page->server($row),
-            $page->t("table.server.origin") => $page->server($row, "server_origin"),
+            "table.player"        => $this->punished_avatar($player_name, $row),
+            "table.executor"      => $this->moderator_avatar($row),
+            "table.reason"        => $page->clean($row['reason']),
+            "table.date"          => $page->millis_to_date($row['time']),
+            "table.server.scope"  => $page->server($row),
+            "table.server.origin" => $page->server($row, "server_origin"),
         );
     }
 }
@@ -189,6 +189,7 @@ if ($st->execute()) {
     $page->table_begin();
 
     foreach ($map as $key => $val) {
+        $key = $page->t($key);
         echo "<tr><td>$key</td><td>$val</td></tr>";
     }
 
