@@ -33,11 +33,15 @@ class Lang {
 
         $array["generic.ipban"] = "IP " . $array["generic.ban"];
         $array["generic.ipmute"] = "IP " . $array["generic.mute"];
+        
+        $array["generic.permanent"] = "永久";
+        $array["generic.permanent.ban"] = $array['generic.permanent'] . ' ' . $array["generic.ban"];
+        $array["generic.permanent.mute"] = $array['generic.permanent'] . ' ' . $array["generic.mute"];
+       
         $array["generic.type"] = "类型";
         $array["generic.active"] = "有效";
         $array["generic.inactive"] = "无效";
         $array["generic.expired"] = "已过期";
-        $array["generic.permanent"] = "永久";
         $array["generic.player-name"] = "玩家id";
 
         $array["page.expired.ban"] = '(已解封)';
