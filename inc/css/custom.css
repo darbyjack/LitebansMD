@@ -4,6 +4,13 @@
     border-radius: 2px;
 }
 
+.avatar-name {
+}
+
+.avatar-name-left {
+    display: flex;
+}
+
 /* header */
 .litebans-header {
     display: block;

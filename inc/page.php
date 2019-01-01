@@ -227,10 +227,10 @@ class Page {
         $str = "{$img}$name";
         if ($name_under) {
             $str = "{$img}<br class='noselect'>$name";
-            return "<div align='center'>$str</div>";
+            return "<div class='avatar-name' align='center'>$str</div>";
         }
         if ($name_left) {
-            return "<div align='left'>$str</div>";
+            return "<div class='avatar-name-left' align='left'>$str</div>";
         }
         return $str;
     }
