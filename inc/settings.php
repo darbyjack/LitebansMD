@@ -176,6 +176,7 @@ final class Settings {
             }
 
             $options = array(
+                PDO::ATTR_TIMEOUT            => 5,
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_EMULATE_PREPARES   => false,
                 PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
