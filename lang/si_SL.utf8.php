@@ -30,9 +30,7 @@ class Lang {
         $array["generic.type"] = "Vrsta";
         $array["generic.active"] = "Aktivno";
         $array["generic.inactive"] = "Neaktivno";
-        $array["generic.permanent"] = "Doživljenska kazen";
-        $array["generic.permanent.ban"] = "Doživljenski";
-        $array["generic.permanent.mute"] = "Doživljensko";
+        $array["generic.permanent"] = "Doživljensko";
         $array["generic.player-name"] = "Igralec";
 
         $array["table.player"] = $array["generic.player-name"];
